@@ -78,10 +78,10 @@ if (gen == true)
             left = false;
             right = false;
             
-            instance_create(gemx+960, gemy, Door_top_obj);
+            instance_create(gemx+960, gemy + 78, Door_top_obj);
             gemy -= 1080;
             instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx+960, gemy+982, Door_bottom_obj);
+            instance_create(gemx+960, gemy+900, Door_bottom_obj);
             if (rooms_generated == 4)
             {
                 instance_create(gemx + 500, gemy + 500, obj_monster_shot);    
@@ -95,10 +95,10 @@ if (gen == true)
             left = false;
             right = false;
             
-            instance_create(gemx+960, gemy+982, Door_bottom_obj);
+            instance_create(gemx+960, gemy+900, Door_bottom_obj);
             gemy += 1080;
             instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx+960, gemy, Door_top_obj);
+            instance_create(gemx+960, gemy + 78, Door_top_obj);
                         if (rooms_generated == 4)
             {
                 instance_create(gemx + 500, gemy - 500, obj_monster_shot);    
@@ -112,10 +112,10 @@ if (gen == true)
             left = true;
             right = false;
             
-            instance_create(gemx +1840, gemy+540, Door_right_obj);
+            instance_create(gemx +1640, gemy+540, Door_right_obj);
             gemx += 1920;
             instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx, gemy+540, Door_left_obj);
+            instance_create(gemx + 170, gemy+540, Door_left_obj);
                         if (rooms_generated == 4)
             {
                 instance_create(gemx + 500, gemy + 500, obj_monster_shot);    
@@ -128,10 +128,10 @@ if (gen == true)
             left = false;
             right = true;
             
-            instance_create(gemx, gemy+540, Door_left_obj);
+            instance_create(gemx + 170, gemy+540, Door_left_obj);
             gemx -= 1920;
             instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx+1840/*1920 - taille de porte*/, gemy+540, Door_right_obj);
+            instance_create(gemx+1620/*1920 - taille de porte*/, gemy+540, Door_right_obj);
                     if (rooms_generated == 4)
             {
                   instance_create(gemx + 500, gemy + 500, obj_monster_shot);    

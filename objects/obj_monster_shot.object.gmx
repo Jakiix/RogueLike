@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>firing = false;
+
+hp = 3
 </string>
           </argument>
         </arguments>
@@ -83,11 +85,17 @@ if (place_meeting(x, y, object1))
 {
     var nearest_enemy;
     nearest_enemy = instance_nearest(x, y, object1);
+    hp =- nearest_enemy.damage;
     with (nearest_enemy)
     {
         instance_destroy();
     }
-  
+    
+}
+
+if (hp &lt;= 0)
+{
+    instance_destroy()
 }
 </string>
           </argument>

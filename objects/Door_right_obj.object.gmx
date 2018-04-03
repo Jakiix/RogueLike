@@ -30,7 +30,7 @@
     view_xview[0] += 1920;
     with (Player_obj)
     {
-        x += 400;
+        x += 700;
     }
 }
 </string>

@@ -30,7 +30,7 @@
     view_yview[0] -= 1080;
     with (Player_obj)
     {
-        y -= 400;
+        y -= 600;
     }
 }
 </string>
