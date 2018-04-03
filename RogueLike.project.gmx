@@ -8,25 +8,39 @@
     <sound>sound\denver</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\player</sprite>
-    <sprite>sprites\sprite1</sprite>
-    <sprite>sprites\shot</sprite>
-    <sprite>sprites\monster_shot</sprite>
-    <sprite>sprites\monster</sprite>
-    <sprite>sprites\spr_room</sprite>
-    <sprite>sprites\spr_door_side</sprite>
-    <sprite>sprites\spr_door</sprite>
-    <sprite>sprites\wall_s</sprite>
+    <sprites name="Player">
+      <sprite>sprites\Parent</sprite>
+      <sprite>sprites\Player_right_moove</sprite>
+      <sprite>sprites\Player_still_right</sprite>
+      <sprite>sprites\Player_left_moove</sprite>
+      <sprite>sprites\Player_still_left</sprite>
+    </sprites>
+    <sprites name="Ennemies">
+      <sprite>sprites\Monster_red</sprite>
+      <sprite>sprites\Shot</sprite>
+      <sprite>sprites\Monster</sprite>
+    </sprites>
+    <sprites name="Items">
+      <sprite>sprites\Pepsi</sprite>
+      <sprite>sprites\Pizza</sprite>
+    </sprites>
     <sprites name="Chest">
-      <sprite>sprites\sprite9_gRED</sprite>
-      <sprite>sprites\sprite10_GREEN</sprite>
-      <sprite>sprites\sprite11_GREEN-OPEN</sprite>
-      <sprite>sprites\sprite12_RED-OPEN</sprite>
-      <sprite>sprites\sprite13_BROWN</sprite>
-      <sprite>sprites\sprite14_BROWN_OPEN</sprite>
+      <sprite>sprites\Chest_red_closed</sprite>
+      <sprite>sprites\Chest_red_opened</sprite>
+      <sprite>sprites\Chest_green_closed</sprite>
+      <sprite>sprites\Chest_green_opened</sprite>
+      <sprite>sprites\Chest_brown_closed</sprite>
+      <sprite>sprites\Chest__brown_opened</sprite>
     </sprites>
     <sprites name="Menu">
-      <sprite>sprites\spr_arrow</sprite>
+      <sprite>sprites\Arrow</sprite>
+    </sprites>
+    <sprites name="Scenery">
+      <sprite>sprites\Wall</sprite>
+      <sprite>sprites\Door_top</sprite>
+      <sprite>sprites\Door_right</sprite>
+      <sprite>sprites\Door_bottom</sprite>
+      <sprite>sprites\Door_left</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -34,6 +48,7 @@
     <background>background\menu2</background>
     <background>background\menu3</background>
     <background>background\menu4</background>
+    <background>background\background4</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -43,29 +58,43 @@
     <font>fonts\fnt_options</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_player</object>
-    <object>objects\object1</object>
-    <object>objects\obj_shot</object>
-    <object>objects\object2</object>
-    <object>objects\obj_monster_shot</object>
-    <object>objects\obj_monster</object>
-    <object>objects\obj_room</object>
+    <objects name="Player">
+      <object>objects\Parent_obj</object>
+      <object>objects\Player_obj</object>
+    </objects>
     <objects name="Door">
-      <object>objects\obj_door_top</object>
-      <object>objects\obj_door_bottom</object>
-      <object>objects\obj_door_left</object>
-      <object>objects\obj_door_right</object>
-      <object>objects\obj_generate_room</object>
+      <object>objects\Door_top_obj</object>
+      <object>objects\Door_right_obj</object>
+      <object>objects\Door_bottom_obj</object>
+      <object>objects\Door_left_obj</object>
     </objects>
     <objects name="Chest">
-      <object>objects\obj_chest_cl_boss</object>
+      <object>objects\Chest_obj</object>
     </objects>
-    <object>objects\obj_menu</object>
-    <object>objects\full</object>
+    <objects name="Ennemies">
+      <object>objects\obj_shot</object>
+      <object>objects\obj_monster</object>
+      <object>objects\obj_monster_shot</object>
+      <object>objects\object1</object>
+    </objects>
+    <objects name="Scenary">
+      <object>objects\Wall_obj</object>
+    </objects>
+    <objects name="Items">
+      <object>objects\Pizza_obj</object>
+      <object>objects\Pepsi_obj</object>
+    </objects>
+    <objects name="Game">
+      <object>objects\FullScreen</object>
+      <object>objects\Random_generation</object>
+      <object>objects\Pause_obj</object>
+      <object>objects\Menu_obj</object>
+      <object>objects\Stats</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\menuroom</room>
-    <room>rooms\room1</room>
+    <room>rooms\Menu</room>
+    <room>rooms\Level</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
