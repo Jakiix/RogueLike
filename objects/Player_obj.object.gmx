@@ -25,21 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.dir = 0;
-attack = 3;
-defense = 3;
+            <string>room_id = 0
 
-movespeed = 15;
-firing = false;
-bounce = 0;
+global.dir = 0
+attack = 3
+defense = 3
+
+movespeed = 15
+firing = false
+bounce = 0
 
 
-canmove = true;
+canmove = true
 
-antistickx = 500;
-antisticky = 500;
+antistickx = 500
+antisticky = 500
 
-hp = 5;
+hp = 5
 </string>
           </argument>
         </arguments>

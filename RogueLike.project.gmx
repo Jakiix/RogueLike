@@ -68,6 +68,7 @@
       <object>objects\Door_right_obj</object>
       <object>objects\Door_bottom_obj</object>
       <object>objects\Door_left_obj</object>
+      <object>objects\Door</object>
     </objects>
     <objects name="Chest">
       <object>objects\Chest_obj</object>

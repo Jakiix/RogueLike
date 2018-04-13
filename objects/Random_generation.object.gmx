@@ -58,93 +58,98 @@ right = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize(); // makes it rng
+            <string>randomize() // makes it rng
 
 if (gen == true)
 {
     do
     {
-        rngroom = 0;//irandom(3);
-        rooms_generated+=1;
-        
+        rngroom = 0//irandom(3)
+        rooms_generated+=1
+
         if (rooms_generated &gt;= 5)
         {
-            gen = false;
+            gen = false
         }
         if (rngroom == 0 &amp;&amp; up == false)
         {
-            up = false;
-            down = true;
-            left = false;
-            right = false;
+            up = false
+            down = true
+            left = false
+            right = false
 
-            instance_create(gemx+960, gemy + 78, Door_top_obj);
-            gemy -= 1080;
-            instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx+960, gemy+900, Door_bottom_obj);
+            door = instance_create(gemx+960, gemy + 78, Door_top_obj)
+            door.room_id = rooms_generated + 1
+            gemy -= 1080
+            instance_create(gemx, gemy, Wall_obj)
+            door = instance_create(gemx+960, gemy+900, Door_bottom_obj)
+            door.room_id = rooms_generated
+
+            monster = instance_create(gemx + 1576, gemy + 196, obj_monster)
+            monster.room_id = rooms_generated + 1
 
             //top left
-            //instance_create(gemx + 276, gemy + 196, object19);
+            //instance_create(gemx + 276, gemy + 196, object19)
 
             //top right
-//            instance_create(gemx + 1576, gemy + 196, object19);
+//            instance_create(gemx + 1576, gemy + 196, object19)
 
             //down left
-//            instance_create(gemx + 276, gemy + 846, object19);
+//            instance_create(gemx + 276, gemy + 846, object19)
 
             //down right
-//            instance_create(gemx + 1576, gemy + 846, object19);
+//            instance_create(gemx + 1576, gemy + 846, object19)
 
-//            instance_create(gemx+960, (gemy+900) / 2, Chest_obj);  
-  //          instance_create(gemx + 500, gemy - 500, obj_monster);
+//            instance_create(gemx+960, (gemy+900) / 2, Chest_obj)
+  //          instance_create(gemx + 500, gemy - 500, obj_monster)
         }
         if (rngroom == 1 &amp;&amp; down == false)
         {
-            up = true;
-            down = false;
-            left = false;
-            right = false;
-            
-            instance_create(gemx+960, gemy+900, Door_bottom_obj);
-            gemy += 1080;
-            instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx+960, gemy + 78, Door_top_obj);
-                        if (rooms_generated == 4)
+            up = true
+            down = false
+            left = false
+            right = false
+
+            instance_create(gemx+960, gemy+900, Door_bottom_obj)
+            gemy += 1080
+            instance_create(gemx, gemy, Wall_obj)
+            instance_create(gemx+960, gemy + 78, Door_top_obj)
+            if (rooms_generated == 4)
             {
-                instance_create(gemx + 500, gemy - 500, obj_monster_shot);
+                instance_create(gemx + 500, gemy - 500, obj_monster_shot)
             }
         }
-        
+
         if (rngroom == 2 &amp;&amp; right == false)
         {
-            up = false;
-            down = false;
-            left = true;
-            right = false;
-            
-            instance_create(gemx +1640, gemy+540, Door_right_obj);
-            gemx += 1920;
-            instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx + 170, gemy+540, Door_left_obj);
-                        if (rooms_generated == 4)
+            up = false
+            down = false
+            left = true
+            right = false
+
+            instance_create(gemx +1640, gemy+540, Door_right_obj)
+            gemx += 1920
+            instance_create(gemx, gemy, Wall_obj)
+            instance_create(gemx + 170, gemy+540, Door_left_obj)
+            if (rooms_generated == 4)
             {
-                instance_create(gemx + 500, gemy + 500, obj_monster_shot);    
+                instance_create(gemx + 500, gemy + 500, obj_monster_shot)
             }
         }     
         if (rngroom == 3 &amp;&amp; left == false)
         {
-            up = false;
-            down = false;
-            left = false;
-            right = true;
-            
-            instance_create(gemx + 170, gemy+540, Door_left_obj);
-            gemx -= 1920;
-            instance_create(gemx, gemy, Wall_obj);
-            instance_create(gemx+1620/*1920 - taille de porte*/, gemy+540, Door_right_obj);
-                    if (rooms_generated == 4)
+            up = false
+            down = false
+            left = false
+            right = true
+
+            instance_create(gemx + 170, gemy+540, Door_left_obj)
+            gemx -= 1920
+            instance_create(gemx, gemy, Wall_obj)
+            instance_create(gemx+1620/*1920 - taille de porte*/, gemy+540, Door_right_obj)
+            if (rooms_generated == 4)
             {
-                  instance_create(gemx + 500, gemy + 500, obj_monster_shot);    
+                  instance_create(gemx + 500, gemy + 500, obj_monster_shot)
             }
         }         
     }
