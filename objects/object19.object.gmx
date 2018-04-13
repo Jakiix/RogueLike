@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_monster_shot</parentName>
+  <parentName>obj_parent_monster</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="3" enumb="0">
@@ -30,6 +30,22 @@ if (firing == false)
 {
     firing = true;
     alarm[0] = 50;
+}
+
+if (place_meeting(x, y, obj_parent_shot))
+{
+    var nearest_enemy;
+    nearest_enemy = instance_nearest(x, y, obj_parent_shot);
+    hp =- nearest_enemy.damage;
+    with (nearest_enemy)
+    {
+        instance_destroy();
+    }
+}
+
+if (hp &lt;= 0)
+{
+    instance_destroy()
 }
 </string>
           </argument>

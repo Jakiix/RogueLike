@@ -102,7 +102,7 @@ hp = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x, y, object1);
+            <string>instance_create(x, y, obj_player_shot);
 firing = false;
 canmove = true;
 </string>
@@ -163,7 +163,7 @@ if (keyboard_check(ord("I")))
     {   
         global.dir = 90;
         firing = true;
-        alarm[0] = 20;
+        alarm[0] = 5;
     }  
 }
 
@@ -173,7 +173,7 @@ if (keyboard_check(ord("K")))
     {   
         global.dir = 270;
         firing = true;
-        alarm[0] = 20;
+        alarm[0] = 5;
     }  
 }
 
@@ -183,7 +183,7 @@ if (keyboard_check(ord("J")))
     {   
         global.dir = 180;
         firing = true;
-        alarm[0] = 20;
+        alarm[0] = 5;
     }  
 }
 
@@ -193,8 +193,22 @@ if (keyboard_check(ord("L")))
     {   
         global.dir = 0;
         firing = true;
-        alarm[0] = 20;
+        alarm[0] = 5;
     }  
+}
+
+if (place_meeting(x, y, obj_parent_shot))
+{
+    var nearest_enemy;
+    nearest_enemy = instance_nearest(x, y, obj_parent_shot);
+    if (nearest_enemy.enemies != false)
+    {
+        hp =- nearest_enemy.damage;
+        with (nearest_enemy)
+        {
+            instance_destroy();
+        }
+    }
 }
 
 if (hp &lt;= 0)

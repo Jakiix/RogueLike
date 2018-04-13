@@ -18,6 +18,7 @@
     <sprites name="Ennemies">
       <sprite>sprites\Monster_red</sprite>
       <sprite>sprites\Shot</sprite>
+      <sprite>sprites\spr_shot_player</sprite>
       <sprite>sprites\Monster</sprite>
     </sprites>
     <sprites name="Items">
@@ -71,11 +72,12 @@
       <object>objects\Chest_obj</object>
     </objects>
     <objects name="Ennemies">
-      <object>objects\obj_shot</object>
+      <object>objects\obj_parent_monster</object>
       <object>objects\obj_monster</object>
       <object>objects\obj_monster_shot</object>
-      <object>objects\object1</object>
-      <object>objects\object19</object>
+      <object>objects\obj_parent_shot</object>
+      <object>objects\obj_shot</object>
+      <object>objects\obj_player_shot</object>
     </objects>
     <objects name="Scenary">
       <object>objects\Wall_obj</object>
