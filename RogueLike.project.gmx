@@ -59,7 +59,6 @@
   </fonts>
   <objects name="objects">
     <objects name="Player">
-      <object>objects\Parent_obj</object>
       <object>objects\Player_obj</object>
     </objects>
     <objects name="Door">
@@ -76,6 +75,7 @@
       <object>objects\obj_monster</object>
       <object>objects\obj_monster_shot</object>
       <object>objects\object1</object>
+      <object>objects\object19</object>
     </objects>
     <objects name="Scenary">
       <object>objects\Wall_obj</object>
