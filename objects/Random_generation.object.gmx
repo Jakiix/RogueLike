@@ -88,20 +88,8 @@ if (gen == true)
             monster = instance_create(gemx + 1576, gemy + 196, obj_monster)
             monster.room_id = rooms_generated + 1
 
-            //top left
-            //instance_create(gemx + 276, gemy + 196, object19)
-
-            //top right
-//            instance_create(gemx + 1576, gemy + 196, object19)
-
-            //down left
-//            instance_create(gemx + 276, gemy + 846, object19)
-
-            //down right
-//            instance_create(gemx + 1576, gemy + 846, object19)
-
-//            instance_create(gemx+960, (gemy+900) / 2, Chest_obj)
-  //          instance_create(gemx + 500, gemy - 500, obj_monster)
+            script_generate_monster(gemx, gemy, obj_boss_1);
+            instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }
         if (rngroom == 1 &amp;&amp; down == false)
         {

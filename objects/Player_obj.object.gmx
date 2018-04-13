@@ -41,7 +41,8 @@ canmove = true
 antistickx = 500
 antisticky = 500
 
-hp = 5
+hp = 100
+
 </string>
           </argument>
         </arguments>
