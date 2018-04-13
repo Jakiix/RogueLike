@@ -20,6 +20,7 @@
       <sprite>sprites\Shot</sprite>
       <sprite>sprites\spr_shot_player</sprite>
       <sprite>sprites\Monster</sprite>
+      <sprite>sprites\Boss</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\Pepsi</sprite>
@@ -75,6 +76,7 @@
       <object>objects\obj_parent_monster</object>
       <object>objects\obj_monster</object>
       <object>objects\obj_monster_shot</object>
+      <object>objects\obj_boss_1</object>
       <object>objects\obj_parent_shot</object>
       <object>objects\obj_shot</object>
       <object>objects\obj_player_shot</object>
