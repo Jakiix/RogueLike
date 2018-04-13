@@ -65,7 +65,7 @@ if (place_meeting(x, y, obj_parent_shot))
     nearest_enemy = instance_nearest(x, y, obj_parent_shot);
     if (nearest_enemy.enemies == false)
     {
-        hp =- nearest_enemy.damage;
+        hp -= nearest_enemy.damage;
         with (nearest_enemy)
         {
             instance_destroy();
