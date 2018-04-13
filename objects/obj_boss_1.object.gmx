@@ -26,7 +26,34 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 60
+instance_create(x, y, obj_shot);
+firing = false
 
+hp = 50
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(x, y, obj_shot);
+firing = false
 </string>
           </argument>
         </arguments>
@@ -52,6 +79,53 @@
             <string>direction = irandom_range(0, 359);
 speed = 5;
 alarm[0] = 60;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.Pause) exit;
+if (firing == false)
+{
+    firing = true;
+    alarm[1] = 20;
+}
+
+if (place_meeting(x, y, obj_parent_shot))
+{
+    var nearest_enemy;
+    nearest_enemy = instance_nearest(x, y, obj_parent_shot);
+    if (nearest_enemy.enemies == false)
+    {
+        hp -= nearest_enemy.damage;
+        with (nearest_enemy)
+        {
+            instance_destroy();
+        }
+    }
+}
+
+if (hp &lt;= 0)
+{
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
