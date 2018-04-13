@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_id = 0
-
+            <string>event_inherited()
 hp = 3
 </string>
           </argument>

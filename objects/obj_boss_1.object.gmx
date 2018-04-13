@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 60
+            <string>event_inherited()
+alarm[0] = 60
 instance_create(x, y, obj_shot);
 firing = false
 
@@ -102,7 +103,7 @@ alarm[0] = 60;
           <argument>
             <kind>1</kind>
             <string>if(global.Pause) exit;
-if (firing == false)
+if (firing == false &amp;&amp; Player_obj.room_id == room_id)
 {
     firing = true;
     alarm[1] = 20;

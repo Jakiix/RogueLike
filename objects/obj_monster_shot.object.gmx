@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>firing = false;
+            <string>event_inherited()
+firing = false
 hp = 3
 </string>
           </argument>
@@ -74,7 +75,7 @@ firing = false
           <argument>
             <kind>1</kind>
             <string>if(global.Pause) exit;
-if (firing == false)
+if (firing == false &amp;&amp; Player_obj.room_id == room_id)
 {
     firing = true;
     alarm[0] = 20;
