@@ -53,7 +53,6 @@ draw_set_font(fnt_options);
 draw_set_color(c_white);
 draw_text(view_xview[0] + 50, view_yview[0] + 50, "HP : " + string(Player_obj.hp));
 draw_text(view_xview[0] + 50, view_yview[0] + 100, "Attack : " + string(Player_obj.attack));
-draw_text(view_xview[0] + 50, view_yview[0] + 150, "Defense : " + string(Player_obj.defense));
 </string>
           </argument>
         </arguments>

@@ -25,20 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if window_get_fullscreen()
-{
-    window_set_fullscreen(false);
-}
-else
-{
-   window_set_fullscreen(true);
-}
+            <string>window_set_fullscreen(true);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="10" enumb="70">
+    <event eventtype="5" enumb="70">
       <action>
         <libid>1</libid>
         <id>603</id>

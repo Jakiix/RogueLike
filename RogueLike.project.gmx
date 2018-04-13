@@ -9,11 +9,11 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
-      <sprite>sprites\Parent</sprite>
       <sprite>sprites\Player_right_moove</sprite>
       <sprite>sprites\Player_still_right</sprite>
       <sprite>sprites\Player_left_moove</sprite>
       <sprite>sprites\Player_still_left</sprite>
+      <sprite>sprites\Shot_player</sprite>
     </sprites>
     <sprites name="Ennemies">
       <sprite>sprites\Monster_red</sprite>
@@ -35,7 +35,16 @@
       <sprite>sprites\Chest__brown_opened</sprite>
     </sprites>
     <sprites name="Menu">
-      <sprite>sprites\Arrow</sprite>
+      <sprite>sprites\start_button</sprite>
+      <sprite>sprites\continue_button</sprite>
+      <sprite>sprites\options_button</sprite>
+      <sprite>sprites\exit_sprite</sprite>
+      <sprite>sprites\back_button</sprite>
+      <sprite>sprites\sound_button</sprite>
+      <sprite>sprites\control_button</sprite>
+      <sprite>sprites\Key_button</sprite>
+      <sprite>sprites\keyController</sprite>
+      <sprite>sprites\save_button</sprite>
     </sprites>
     <sprites name="Scenery">
       <sprite>sprites\Wall</sprite>
@@ -47,20 +56,24 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\menu_1</background>
-    <background>background\menu2</background>
-    <background>background\menu3</background>
-    <background>background\menu4</background>
     <background>background\background4</background>
+    <background>background\main_bkg</background>
+    <background>background\options_bkg</background>
+    <background>background\controls_bkg</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scr_menu.gml</script>
     <script>scripts\script_generate_monsters.gml</script>
     <script>scripts\script_generate_monster.gml</script>
+    <scripts name="Menu">
+      <script>scripts\scr_menu.gml</script>
+      <script>scripts\scr_menu_option.gml</script>
+      <script>scripts\scr_menu_control.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_options</font>
+    <font>fonts\fnt_menu</font>
   </fonts>
   <objects name="objects">
     <objects name="Player">
@@ -97,12 +110,49 @@
       <object>objects\FullScreen</object>
       <object>objects\Random_generation</object>
       <object>objects\Pause_obj</object>
-      <object>objects\Menu_obj</object>
       <object>objects\Stats</object>
+    </objects>
+    <objects name="Menu">
+      <objects name="Main">
+        <object>objects\obj_start_button</object>
+        <object>objects\obj_continue_button</object>
+        <object>objects\obj_options_button</object>
+        <object>objects\obj_exit_button</object>
+        <object>objects\Menu_obj</object>
+      </objects>
+      <objects name="Option">
+        <object>objects\Menu_obj_option</object>
+        <object>objects\obj_sound_button</object>
+        <object>objects\obj_control_button</object>
+        <object>objects\obj_back_button</object>
+      </objects>
+      <objects name="Sound">
+        <object>objects\Menu_obj_sound</object>
+      </objects>
+      <objects name="Control">
+        <object>objects\Menu_obj_control</object>
+        <object>objects\obj_key_up</object>
+        <object>objects\obj_key_down</object>
+        <object>objects\obj_key_left</object>
+        <object>objects\obj_key_right</object>
+        <object>objects\obj_key_shot_up</object>
+        <object>objects\obj_key_shot_down</object>
+        <object>objects\obj_key_shot_left</object>
+        <object>objects\obj_key_shot_right</object>
+        <object>objects\obj_keyController</object>
+        <object>objects\ob_back_control_button</object>
+        <object>objects\obj_save_button</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\Menu</room>
+    <rooms name="Menu">
+      <room>rooms\Boot</room>
+      <room>rooms\Menu</room>
+      <room>rooms\Menu_option</room>
+      <room>rooms\Menu_control</room>
+      <room>rooms\Menu_sound</room>
+    </rooms>
     <room>rooms\Level</room>
     <room>rooms\Level_2</room>
     <room>rooms\Level_3</room>
