@@ -61,7 +61,7 @@
     <instance objName="obj_key_shot_right" x="1476" y="686" name="inst_119DE155" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_save_button" x="1859" y="1030" name="inst_CF9BBB7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Menu_obj_control" x="23" y="39" name="inst_CC5C845B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ob_back_control_button" x="64" y="1038" name="inst_A87EFAFE" locked="0" code="" scaleX="1.24000000953674" scaleY="1.51612901687622" colour="4294967295" rotation="0"/>
+    <instance objName="obj_back_control_button" x="64" y="1038" name="inst_A87EFAFE" locked="0" code="" scaleX="1.24000000953674" scaleY="1.51612901687622" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -14,14 +14,14 @@
 global.ambientSound = ini_read_real("sound", "ambient", 50);
 global.effectSound = ini_read_real("sound", "effect", 50);
 global.musicSound = ini_read_real("sound", "music", 50);
-global.key_up = ini_read_real("controls", "up", keyboard_get_map("Z"));
-global.key_down = ini_read_real("controls", "down", keyboard_get_map("Z"));
-global.key_right = ini_read_real("controls", "right", keyboard_get_map("D"));
-global.key_left = ini_read_real("controls", "left", keyboard_get_map("Q"));
-global.key_shot_up = ini_read_real("controls", "shot_up", keyboard_get_map("I"));
-global.key_shot_down = ini_read_real("controls", "shot_down", keyboard_get_map("K"));
-global.key_shot_right = ini_read_real("controls", "shot_right", keyboard_get_map("L"));
-global.key_shot_left = ini_read_real("controls", "shot_left", keyboard_get_map("J"));
+global.key_up = ini_read_real("control", "up", keyboard_get_map("Z"));
+global.key_down = ini_read_real("control", "down", keyboard_get_map("S"));
+global.key_right = ini_read_real("control", "right", keyboard_get_map("D"));
+global.key_left = ini_read_real("control", "left", keyboard_get_map("Q"));
+global.key_shot_up = ini_read_real("control", "shot_up", keyboard_get_map("I"));
+global.key_shot_down = ini_read_real("control", "shot_down", keyboard_get_map("K"));
+global.key_shot_right = ini_read_real("control", "shot_right", keyboard_get_map("L"));
+global.key_shot_left = ini_read_real("control", "shot_left", keyboard_get_map("J"));
 ini_close();
 
 room_goto(Menu);</code>

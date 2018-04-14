@@ -2,6 +2,7 @@ switch (mpos)
 {
     case 0:
     {
+        room_goto(Menu_sound);
         break;
     }
     case 1:

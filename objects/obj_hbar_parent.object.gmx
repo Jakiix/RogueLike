@@ -25,20 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = "Sound";
-menu[1] = "Control";
-menu[2] = "Back";
-
-space = 250;
-mpos = 0;
-
-
+            <string>rightLimit = x + (sprite_get_width(bar) / 2) - 30;
+leftLimit = x - (sprite_get_width(bar) / 2) + 30;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,32 +49,11 @@ mpos = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var move = 0;
-move -= max(keyboard_check_pressed(vk_up), keyboard_check_pressed(global.key_up), 0);
-move += max(keyboard_check_pressed(vk_down), keyboard_check_pressed(global.key_down), 0);
-
-if (move != 0)
+            <string>if ((mouse_x &gt; leftLimit) &amp;&amp; (mouse_x &lt; rightLimit))
 {
-    mpos += move;
-    if (mpos &lt; 0) 
-    {
-        mpos = array_length_1d(menu) - 1;
-    }
-    if (mpos &gt; array_length_1d(menu) - 1)
-    {
-        mpos = 0;
-    }
+    a.x = mouse_x;
+    a.clicked = true;
 }
-
-var push;
-push = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_shift), keyboard_check_released(vk_space), 0);
-if (push == 1)
-{
-    scr_menu_option();
-}
-
-
-
 </string>
           </argument>
         </arguments>

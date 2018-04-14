@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = "Sound";
-menu[1] = "Control";
-menu[2] = "Back";
+            <string>menu[0] = "Back";
+menu[1] = "Save";
 
 space = 250;
 mpos = 0;
@@ -56,8 +55,8 @@ mpos = 0;
           <argument>
             <kind>1</kind>
             <string>var move = 0;
-move -= max(keyboard_check_pressed(vk_up), keyboard_check_pressed(ord("Z")), 0);
-move += max(keyboard_check_pressed(vk_down), keyboard_check_pressed(ord("S")), 0);
+move -= max(keyboard_check_pressed(vk_up), keyboard_check_pressed(global.key_up), 0);
+move += max(keyboard_check_pressed(vk_down), keyboard_check_pressed(global.key_down), 0);
 
 if (move != 0)
 {
@@ -76,7 +75,7 @@ var push;
 push = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_shift), keyboard_check_released(vk_space), 0);
 if (push == 1)
 {
-    scr_menu_option();
+    scr_menu_sound();
 }
 
 

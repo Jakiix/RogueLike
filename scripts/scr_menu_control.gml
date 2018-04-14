@@ -106,14 +106,6 @@ switch (mpos)
                 room_goto(Menu_option);
             }
         }
-        /*else if (room = Menu_sound)
-        {
-            
-        }
-        else
-        {
-            room_goto(Menu);
-        }*/
         break;
     }
 }

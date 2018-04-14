@@ -140,27 +140,27 @@ else
     image_speed = 0.25;
 }
 
-if (keyboard_check(ord("Z")) &amp;&amp; keyboard_check(ord("Q")))
+if (keyboard_check(global.key_up) &amp;&amp; keyboard_check(global.key_left))
     movespeed = 15;
-else if (keyboard_check(ord("Z")) &amp;&amp; keyboard_check(ord("E")))
+else if (keyboard_check(global.key_up) &amp;&amp; keyboard_check(global.key_right))
     movespeed = 15; 
-else if (keyboard_check(ord("S")) &amp;&amp; keyboard_check(ord("Q")))
+else if (keyboard_check(global.key_down) &amp;&amp; keyboard_check(global.key_left))
     movespeed = 15;
-else if (keyboard_check(ord("S")) &amp;&amp; keyboard_check(ord("D"))) 
+else if (keyboard_check(global.key_down) &amp;&amp; keyboard_check(global.key_right)) 
     movespeed = 15;
 else
     movespeed = 15;
    
 if (canmove == true)
 {
-    if (keyboard_check(ord("Z"))/* &amp;&amp; !place_meeting(x, y-movespeed, obj_room)*/) {y -= movespeed;}
-    if (keyboard_check(ord("S"))/* &amp;&amp; !place_meeting(x, y+movespeed, obj_room)*/) {y += movespeed;}
-    if (keyboard_check(ord("Q"))/* &amp;&amp; !place_meeting(x-movespeed, y, obj_room)*/) {x -= movespeed;}
-    if (keyboard_check(ord("D"))/* &amp;&amp; !place_meeting(x+movespeed, y, obj_room)*/) {x += movespeed;}
+    if (keyboard_check(global.key_up)/* &amp;&amp; !place_meeting(x, y-movespeed, obj_room)*/) {y -= movespeed;}
+    if (keyboard_check(global.key_down)/* &amp;&amp; !place_meeting(x, y+movespeed, obj_room)*/) {y += movespeed;}
+    if (keyboard_check(global.key_left)/* &amp;&amp; !place_meeting(x-movespeed, y, obj_room)*/) {x -= movespeed;}
+    if (keyboard_check(global.key_right)/* &amp;&amp; !place_meeting(x+movespeed, y, obj_room)*/) {x += movespeed;}
 }
 
 
-if (keyboard_check(ord("I")))
+if (keyboard_check(global.key_shot_up))
 {
     if (firing == false)
     {   
@@ -170,7 +170,7 @@ if (keyboard_check(ord("I")))
     }  
 }
 
-if (keyboard_check(ord("K")))
+if (keyboard_check(global.key_shot_down))
 {
     if (firing == false)
     {   
@@ -180,7 +180,7 @@ if (keyboard_check(ord("K")))
     }  
 }
 
-if (keyboard_check(ord("J")))
+if (keyboard_check(global.key_shot_left))
 {
     if (firing == false)
     {   
@@ -190,7 +190,7 @@ if (keyboard_check(ord("J")))
     }  
 }
 
-if (keyboard_check(ord("L")))
+if (keyboard_check(global.key_shot_right))
 {
     if (firing == false)
     {   
