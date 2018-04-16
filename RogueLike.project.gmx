@@ -14,6 +14,8 @@
       <sprite>sprites\Player_left_moove</sprite>
       <sprite>sprites\Player_still_left</sprite>
       <sprite>sprites\Shot_player</sprite>
+      <sprite>sprites\new_shot</sprite>
+      <sprite>sprites\Isaac_fat</sprite>
     </sprites>
     <sprites name="Ennemies">
       <sprite>sprites\Monster_red</sprite>
@@ -21,10 +23,13 @@
       <sprite>sprites\spr_shot_player</sprite>
       <sprite>sprites\Monster</sprite>
       <sprite>sprites\Boss</sprite>
+      <sprite>sprites\Skull</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\Pepsi</sprite>
       <sprite>sprites\Pizza</sprite>
+      <sprite>sprites\test</sprite>
+      <sprite>sprites\new_pepsi</sprite>
     </sprites>
     <sprites name="Chest">
       <sprite>sprites\Chest_red_closed</sprite>
@@ -55,6 +60,9 @@
       <sprite>sprites\Door_bottom</sprite>
       <sprite>sprites\Door_left</sprite>
       <sprite>sprites\spr_change_room</sprite>
+      <sprite>sprites\isaac_door</sprite>
+      <sprite>sprites\isaac_door_bottom</sprite>
+      <sprite>sprites\isaac_wall</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
