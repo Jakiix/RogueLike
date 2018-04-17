@@ -3,7 +3,7 @@
   <spriteName>Isaac_fat</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -34,7 +34,6 @@ defense = 3
 movespeed = 15
 firing = false
 bounce = 0
-
 
 canmove = true
 
@@ -84,6 +83,29 @@ hp = 100
           <argument>
             <kind>0</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>speed = 0;
+</string>
           </argument>
         </arguments>
       </action>
@@ -141,24 +163,23 @@ else
 }
 
 if (keyboard_check(global.key_up) &amp;&amp; keyboard_check(global.key_left))
-    movespeed = 4;
-else if (keyboard_check(global.key_up) &amp;&amp; keyboard_check(global.key_right))
-    movespeed = 4; 
-else if (keyboard_check(global.key_down) &amp;&amp; keyboard_check(global.key_left))
-    movespeed = 4;
-else if (keyboard_check(global.key_down) &amp;&amp; keyboard_check(global.key_right)) 
-    movespeed = 4;
-else
     movespeed = 5;
+else if (keyboard_check(global.key_up) &amp;&amp; keyboard_check(global.key_right))
+    movespeed = 5; 
+else if (keyboard_check(global.key_down) &amp;&amp; keyboard_check(global.key_left))
+    movespeed = 5;
+else if (keyboard_check(global.key_down) &amp;&amp; keyboard_check(global.key_right)) 
+    movespeed = 5;
+else
+    movespeed = 6;
    
 if (canmove == true)
 {
-    if (keyboard_check(global.key_up)/* &amp;&amp; !place_meeting(x, y-movespeed, obj_room)*/) {y -= movespeed;}
-    if (keyboard_check(global.key_down)/* &amp;&amp; !place_meeting(x, y+movespeed, obj_room)*/) {y += movespeed;}
-    if (keyboard_check(global.key_left)/* &amp;&amp; !place_meeting(x-movespeed, y, obj_room)*/) {x -= movespeed;}
-    if (keyboard_check(global.key_right)/* &amp;&amp; !place_meeting(x+movespeed, y, obj_room)*/) {x += movespeed;}
+    if (keyboard_check(global.key_up) &amp;&amp; !place_meeting(x, y - movespeed, obj_shot)) {y -= movespeed;}
+    if (keyboard_check(global.key_down) &amp;&amp; !place_meeting(x, y + movespeed, obj_shot)) {y += movespeed;}
+    if (keyboard_check(global.key_left) &amp;&amp; !place_meeting(x - movespeed, y, obj_shot)) {x -= movespeed;}
+    if (keyboard_check(global.key_right) &amp;&amp; !place_meeting(x + movespeed, y, obj_shot)) {x += movespeed;}
 }
-
 
 if (keyboard_check(global.key_shot_up))
 {
@@ -200,19 +221,72 @@ if (keyboard_check(global.key_shot_right))
     }  
 }
 
-if (place_meeting(x, y, obj_parent_shot))
+if (place_meeting(x, y, obj_parent_monster))
+{
+   var nearestEnemy;
+   nearestEnemy = instance_nearest(x, y,obj_parent_monster)
+   direction = point_direction(x, y, nearestEnemy.x, nearestEnemy.y) + 180;
+   bounce = 1;
+   alarm[1] = 10;
+}
+else if (place_meeting(x, y, obj_parent_shot))
 {
     var nearest_enemy;
     nearest_enemy = instance_nearest(x, y, obj_parent_shot);
     if (nearest_enemy.enemies != false)
     {
+        direction = point_direction(x, y, nearest_enemy.x, nearest_enemy.y) + 180;
+        bounce = 1;
+        alarm[1] = 10;
         hp -= nearest_enemy.damage;
         with (nearest_enemy)
         {
             instance_destroy();
+            instance_create(x, y, obj_end_ennemy_shot);
         }
     }
 }
+if (bounce == 1)
+{
+    speed = 5;
+    bounce = 0;
+}
+
+var nearestmob;
+if (instance_exists(obj_parent_monster))
+{
+    nearestmob = instance_nearest(x, y, obj_parent_monster)
+    if (
+        ((nearestmob.x &gt; view_xview[0] + view_wview)
+        || (nearestmob.x &lt; view_xview[0]))
+        || ((nearestmob.y &gt; view_yview[0] + view_hview)
+        ||(nearestmob.y) &lt; view_yview[0])
+        )
+    {
+        doorslocked = false;
+        with(Door_top_obj) image_index = 0;
+        with(Door_bottom_obj) image_index = 0;
+        with(Door_left_obj) image_index = 0;
+        with(Door_right_obj) image_index = 0; 
+    }
+    else
+    {
+        doorslocked = true;  
+        with(Door_top_obj) image_index = 1;
+        with(Door_bottom_obj) image_index = 1;
+        with(Door_left_obj) image_index = 1;
+        with(Door_right_obj) image_index = 1;
+    }
+}
+else
+{
+    doorslocked = false;
+    with(Door_top_obj) image_index = 0;
+    with(Door_bottom_obj) image_index = 0;
+    with(Door_left_obj) image_index = 0;
+    with(Door_right_obj) image_index = 0; 
+}
+
 
 if (hp &lt;= 0)
 {

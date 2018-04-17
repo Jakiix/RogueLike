@@ -6,30 +6,28 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\denver</sound>
+    <sound>sound\Ambiance1</sound>
+    <sound>sound\Fap</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
-      <sprite>sprites\Player_right_moove</sprite>
-      <sprite>sprites\Player_still_right</sprite>
-      <sprite>sprites\Player_left_moove</sprite>
-      <sprite>sprites\Player_still_left</sprite>
-      <sprite>sprites\Shot_player</sprite>
       <sprite>sprites\new_shot</sprite>
       <sprite>sprites\Isaac_fat</sprite>
+      <sprite>sprites\anim</sprite>
     </sprites>
     <sprites name="Ennemies">
       <sprite>sprites\Monster_red</sprite>
       <sprite>sprites\Shot</sprite>
-      <sprite>sprites\spr_shot_player</sprite>
-      <sprite>sprites\Monster</sprite>
       <sprite>sprites\Boss</sprite>
       <sprite>sprites\Skull</sprite>
+      <sprite>sprites\anim_blood_tear</sprite>
+      <sprite>sprites\Dead_animation</sprite>
+      <sprite>sprites\spectrum</sprite>
+      <sprite>sprites\blood</sprite>
     </sprites>
     <sprites name="Items">
-      <sprite>sprites\Pepsi</sprite>
       <sprite>sprites\Pizza</sprite>
-      <sprite>sprites\test</sprite>
-      <sprite>sprites\new_pepsi</sprite>
+      <sprite>sprites\Pepsi</sprite>
     </sprites>
     <sprites name="Chest">
       <sprite>sprites\Chest_red_closed</sprite>
@@ -55,14 +53,15 @@
     </sprites>
     <sprites name="Scenery">
       <sprite>sprites\Wall</sprite>
-      <sprite>sprites\Door_top</sprite>
-      <sprite>sprites\Door_right</sprite>
-      <sprite>sprites\Door_bottom</sprite>
-      <sprite>sprites\Door_left</sprite>
       <sprite>sprites\spr_change_room</sprite>
       <sprite>sprites\isaac_door</sprite>
+      <sprite>sprites\isaac_door_left</sprite>
+      <sprite>sprites\isaac_door_right</sprite>
       <sprite>sprites\isaac_door_bottom</sprite>
       <sprite>sprites\isaac_wall</sprite>
+      <sprite>sprites\room_map</sprite>
+      <sprite>sprites\star</sprite>
+      <sprite>sprites\light</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -76,6 +75,7 @@
   <scripts name="scripts">
     <script>scripts\script_generate_monsters.gml</script>
     <script>scripts\script_generate_monster.gml</script>
+    <script>scripts\script_PowerUp.gml</script>
     <scripts name="Menu">
       <script>scripts\scr_menu.gml</script>
       <script>scripts\scr_menu_option.gml</script>
@@ -90,13 +90,16 @@
   <objects name="objects">
     <objects name="Player">
       <object>objects\Player_obj</object>
+      <object>objects\obj_player_shot</object>
+      <object>objects\obj_end_shot</object>
+      <object>objects\obj_parent_shot</object>
     </objects>
     <objects name="Door">
+      <object>objects\Door</object>
       <object>objects\Door_top_obj</object>
       <object>objects\Door_right_obj</object>
       <object>objects\Door_bottom_obj</object>
       <object>objects\Door_left_obj</object>
-      <object>objects\Door</object>
     </objects>
     <objects name="Chest">
       <object>objects\Chest_obj</object>
@@ -106,23 +109,29 @@
       <object>objects\obj_monster</object>
       <object>objects\obj_monster_shot</object>
       <object>objects\obj_boss_1</object>
-      <object>objects\obj_parent_shot</object>
       <object>objects\obj_shot</object>
-      <object>objects\obj_player_shot</object>
+      <object>objects\obj_end_ennemy_shot</object>
+      <object>objects\obj_dead_animation</object>
+      <object>objects\obj_blood</object>
     </objects>
     <objects name="Scenary">
       <object>objects\Wall_obj</object>
       <object>objects\obj_change_room</object>
     </objects>
     <objects name="Items">
+      <object>objects\obj_parent_items</object>
       <object>objects\Pizza_obj</object>
       <object>objects\Pepsi_obj</object>
+      <object>objects\obj_light</object>
     </objects>
     <objects name="Game">
       <object>objects\FullScreen</object>
       <object>objects\Random_generation</object>
       <object>objects\Pause_obj</object>
       <object>objects\Stats</object>
+      <object>objects\obj_mini_map</object>
+      <object>objects\obj_map</object>
+      <object>objects\obj_player_position</object>
     </objects>
     <objects name="Menu">
       <objects name="Main">

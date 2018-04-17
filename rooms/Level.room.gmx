@@ -54,14 +54,11 @@
     <instance objName="Random_generation" x="0" y="0" name="inst_21C6D67E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Pizza_obj" x="1280" y="320" name="inst_EB09EB2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Pizza_obj" x="1120" y="608" name="inst_D3475ED5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="Pizza_obj" x="480" y="704" name="inst_EA6EBF3A" locked="0" code="" scaleX="0.673913061618805" scaleY="0.673913061618805" colour="4294967295" rotation="0"/>
     <instance objName="Pepsi_obj" x="336" y="224" name="inst_6E580AC7" locked="0" code="" scaleX="0.961538434028626" scaleY="0.961538434028626" colour="4294967295" rotation="0"/>
     <instance objName="Pause_obj" x="64" y="336" name="inst_5257CB14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Stats" x="64" y="288" name="inst_7DE1144F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Player_obj" x="391" y="496" name="inst_9DDE81E5" locked="0" code="" scaleX="0.943548381328583" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_monster" x="1008" y="352" name="inst_11A0C5A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_monster_shot" x="1600" y="848" name="inst_DCBE1749" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_boss_1" x="880" y="560" name="inst_9F6C88B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mini_map" x="1632" y="144" name="inst_608644E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

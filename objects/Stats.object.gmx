@@ -53,6 +53,7 @@ draw_set_font(fnt_options);
 draw_set_color(c_white);
 draw_text(view_xview[0] + 50, view_yview[0] + 50, "HP : " + string(Player_obj.hp));
 draw_text(view_xview[0] + 50, view_yview[0] + 100, "Attack : " + string(Player_obj.attack));
+///draw_sprite(room_map, 0, view_xview[0], view_yview[0]);
 </string>
           </argument>
         </arguments>
