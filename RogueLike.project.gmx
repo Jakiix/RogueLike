@@ -130,8 +130,8 @@
         <object>objects\obj_shot_explo2</object>
         <object>objects\obj_shot_explo3</object>
         <object>objects\obj_shot_explo4</object>
-        <object>objects\obj_laser_shot</object>
         <object>objects\obj_laser_head</object>
+        <object>objects\obj_laser_shot</object>
       </objects>
     </objects>
     <objects name="Scenary">
@@ -147,6 +147,7 @@
     </objects>
     <objects name="Game">
       <object>objects\FullScreen</object>
+      <object>objects\Random_generation0</object>
       <object>objects\Random_generation</object>
       <object>objects\Pause_obj</object>
       <object>objects\Stats</object>
