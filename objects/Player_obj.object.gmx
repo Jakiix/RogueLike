@@ -87,6 +87,115 @@ hp = 100
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var i = 0
+var size = 0
+//ok
+if (global.dir == 90)
+{
+    instance_create(x, y - size, obj_laser_shot);
+    while i &lt; 5
+    {
+        size += 64
+        instance_create(x, y - size, obj_laser_shot);
+        i++
+    }
+    instance_create(x, y  - size - 32, obj_laser_head);
+}
+
+/////////
+else if (global.dir == 270)
+{
+    instance_create(x, y + size, obj_laser_shot);
+    while i &lt; 5
+    {
+        size += 64
+        instance_create(x, y + size, obj_laser_shot);
+        i++
+    }
+    size += 64
+    var head = instance_create(x + 32, y  + size + 32, obj_laser_head);
+    with (head)
+    {
+        image_angle = 180
+    }
+    
+}
+
+///////////////////
+
+else if (global.dir == 0)
+{
+    var body = instance_create(x + size, y, obj_laser_shot);
+    with (body)
+    {
+        image_angle = 90
+    }
+    while i &lt; 5
+    {
+        size += 64
+        var body = instance_create(x + size, y, obj_laser_shot);
+        with (body)
+        {
+            image_angle = 90
+        }
+        i++
+    }
+    size += 64
+    var head = instance_create(x + size + 32, y - 32, obj_laser_head);
+    with (head)
+    {
+        image_angle = 270
+    }
+    
+}
+
+
+//ok//
+else if (global.dir == 180)
+{
+    var body = instance_create(x - size, y, obj_laser_shot);
+    with (body)
+    {
+        image_angle = 90
+    }
+    while i &lt; 5
+    {
+        size += 64
+        var body = instance_create(x - size, y, obj_laser_shot);
+        with (body)
+        {
+            image_angle = 90
+        }
+        i++
+    }
+    var head = instance_create(x - size - 32, y, obj_laser_head);
+    with (head)
+    {
+        image_angle = 90
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -127,7 +236,7 @@ hp = 100
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x, y, obj_player_shot);
+            <string>instance_create(x, y, obj_player_shot)
 firing = false;
 canmove = true;
 </string>
@@ -181,6 +290,11 @@ if (canmove == true)
     if (keyboard_check(global.key_right) &amp;&amp; !place_meeting(x + movespeed, y, obj_shot)) {x += movespeed;}
 }
 
+/*if (keyboard_check_released(global.key_shot_up))
+if (keyboard_check_released(global.key_shot_down))
+if (keyboard_check_released(global.key_shot_left))
+if (keyboard_check_released(global.key_shot_right))
+*/
 if (keyboard_check(global.key_shot_up))
 {
     if (firing == false)
@@ -188,6 +302,7 @@ if (keyboard_check(global.key_shot_up))
         global.dir = 90;
         firing = true;
         alarm[0] = 15;
+        alarm[2] = 15
     }  
 }
 
@@ -198,6 +313,7 @@ if (keyboard_check(global.key_shot_down))
         global.dir = 270;
         firing = true;
         alarm[0] = 15;
+         alarm[2] = 15
     }  
 }
 
@@ -207,7 +323,7 @@ if (keyboard_check(global.key_shot_left))
     {   
         global.dir = 180;
         firing = true;
-        alarm[0] = 15;
+        alarm[0] = 15;alarm[2] = 15
     }  
 }
 
@@ -217,7 +333,7 @@ if (keyboard_check(global.key_shot_right))
     {   
         global.dir = 0;
         firing = true;
-        alarm[0] = 15;
+        alarm[0] = 15;alarm[2] = 15
     }  
 }
 
@@ -239,10 +355,13 @@ else if (place_meeting(x, y, obj_parent_shot))
         bounce = 1;
         alarm[1] = 10;
         hp -= nearest_enemy.damage;
-        with (nearest_enemy)
+        if (object_is_ancestor(obj_shot_boomrang, obj_parent_shot) != true)
         {
-            instance_destroy();
-            instance_create(x, y, obj_end_ennemy_shot);
+            with (nearest_enemy)
+            {
+                instance_destroy();
+                instance_create(x, y, obj_end_ennemy_shot);
+            }
         }
     }
 }

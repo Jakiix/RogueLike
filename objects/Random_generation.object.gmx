@@ -41,7 +41,30 @@ right = false;
 powerup[0] = "Pepsi"
 powerup[1] = "Pizza"
 
-audio_play_sound(Ambiance1, 10, false);
+audio_play_sound(snd_theme_room1, 10, false);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_stop_all();
 </string>
           </argument>
         </arguments>
@@ -70,11 +93,11 @@ if (gen == true)
 {
     do
     {
-        rngroom = irandom(3)
         rantype = irandom(100)
-        rooms_generated += 1
+        rngroom = irandom(3)
+        rooms_generated+=1
 
-        if (rooms_generated &gt;= 5)
+        if (rooms_generated &gt;= 20)
         {
             gen = false
         }
@@ -141,10 +164,8 @@ if (gen == true)
             }
             
             instance_create(gemx+960, gemy + 78, Door_top_obj)
-            /*if (rooms_generated == 4)
-            {
-                instance_create(gemx + 500, gemy - 500, obj_monster_shot)
-            }*/
+
+            instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }
 
         if (rngroom == 2 &amp;&amp; right == false)
@@ -177,10 +198,7 @@ if (gen == true)
             }
             
             instance_create(gemx + 170, gemy+540, Door_left_obj)
-            /*if (rooms_generated == 4)
-            {
-                instance_create(gemx + 500, gemy + 500, obj_monster_shot)
-            }*/
+            instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }     
         if (rngroom == 3 &amp;&amp; left == false)
         {
@@ -212,10 +230,8 @@ if (gen == true)
             }
             
             instance_create(gemx+1620/*1920 - taille de porte*/, gemy+540, Door_right_obj)
-            /*if (rooms_generated == 4)
-            {
-                  instance_create(gemx + 500, gemy + 500, obj_monster_shot)
-            }*/
+
+            instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }         
     }
     until (rooms_generated &gt;= 5)

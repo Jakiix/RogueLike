@@ -3,27 +3,34 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="2" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\denver</sound>
     <sound>sound\Ambiance1</sound>
     <sound>sound\Fap</sound>
+    <sound>sound\snd_theme_Menu</sound>
+    <sound>sound\snd_theme_room1</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
       <sprite>sprites\new_shot</sprite>
       <sprite>sprites\Isaac_fat</sprite>
       <sprite>sprites\anim</sprite>
+      <sprite>sprites\body_laser</sprite>
+      <sprite>sprites\head_laser</sprite>
     </sprites>
     <sprites name="Ennemies">
       <sprite>sprites\Monster_red</sprite>
       <sprite>sprites\Shot</sprite>
+      <sprite>sprites\sprite42</sprite>
       <sprite>sprites\Boss</sprite>
       <sprite>sprites\Skull</sprite>
       <sprite>sprites\anim_blood_tear</sprite>
       <sprite>sprites\Dead_animation</sprite>
       <sprite>sprites\spectrum</sprite>
       <sprite>sprites\blood</sprite>
+      <sprite>sprites\boomrang</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\Pizza</sprite>
@@ -62,6 +69,7 @@
       <sprite>sprites\room_map</sprite>
       <sprite>sprites\star</sprite>
       <sprite>sprites\light</sprite>
+      <sprite>sprites\spr_change_room_previous</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -109,14 +117,27 @@
       <object>objects\obj_monster</object>
       <object>objects\obj_monster_shot</object>
       <object>objects\obj_boss_1</object>
+      <object>objects\obj_monsteshot_big</object>
+      <object>objects\obj_monstershot_boomrang</object>
       <object>objects\obj_shot</object>
       <object>objects\obj_end_ennemy_shot</object>
       <object>objects\obj_dead_animation</object>
       <object>objects\obj_blood</object>
+      <objects name="Shot">
+        <object>objects\obj_shot_boomrang</object>
+        <object>objects\obj_shot_big</object>
+        <object>objects\obj_shot_explo</object>
+        <object>objects\obj_shot_explo2</object>
+        <object>objects\obj_shot_explo3</object>
+        <object>objects\obj_shot_explo4</object>
+        <object>objects\obj_laser_shot</object>
+        <object>objects\obj_laser_head</object>
+      </objects>
     </objects>
     <objects name="Scenary">
       <object>objects\Wall_obj</object>
       <object>objects\obj_change_room</object>
+      <object>objects\obj_change_room_previous</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_parent_items</object>
