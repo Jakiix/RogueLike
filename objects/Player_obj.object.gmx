@@ -290,11 +290,34 @@ if (canmove == true)
     if (keyboard_check(global.key_right) &amp;&amp; !place_meeting(x + movespeed, y, obj_shot)) {x += movespeed;}
 }
 
-/*if (keyboard_check_released(global.key_shot_up))
+///////////////////LASER////////////////////////////
+
+if (keyboard_check_released(global.key_shot_up))
+{
+        global.dir = 90;
+        alarm[2] = 20
+}
+
 if (keyboard_check_released(global.key_shot_down))
+{ 
+        global.dir = 270;
+        alarm[2] = 20  
+}
+
 if (keyboard_check_released(global.key_shot_left))
+{
+        global.dir = 180;
+        alarm[2] = 20
+}
+
 if (keyboard_check_released(global.key_shot_right))
-*/
+{
+        global.dir = 0;
+        alarm[2] = 20
+}
+
+//////////////////////SHOT///////////////////////////
+
 if (keyboard_check(global.key_shot_up))
 {
     if (firing == false)
@@ -302,7 +325,6 @@ if (keyboard_check(global.key_shot_up))
         global.dir = 90;
         firing = true;
         alarm[0] = 15;
-        alarm[2] = 15
     }  
 }
 
@@ -313,7 +335,6 @@ if (keyboard_check(global.key_shot_down))
         global.dir = 270;
         firing = true;
         alarm[0] = 15;
-         alarm[2] = 15
     }  
 }
 
@@ -323,7 +344,7 @@ if (keyboard_check(global.key_shot_left))
     {   
         global.dir = 180;
         firing = true;
-        alarm[0] = 15;alarm[2] = 15
+        alarm[0] = 15;
     }  
 }
 
@@ -333,7 +354,7 @@ if (keyboard_check(global.key_shot_right))
     {   
         global.dir = 0;
         firing = true;
-        alarm[0] = 15;alarm[2] = 15
+        alarm[0] = 15;
     }  
 }
 
