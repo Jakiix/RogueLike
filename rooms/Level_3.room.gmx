@@ -57,6 +57,7 @@
     <instance objName="Pause_obj" x="64" y="336" name="inst_5257CB14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Stats" x="64" y="288" name="inst_7DE1144F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="Player_obj" x="384" y="496" name="inst_9DDE81E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_change_room_previous" x="928" y="592" name="inst_4BCDCDBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

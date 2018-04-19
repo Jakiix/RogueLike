@@ -166,6 +166,7 @@ if (gen == true)
             instance_create(gemx+960, gemy + 78, Door_top_obj)
 
             instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
+
         }
 
         if (rngroom == 2 &amp;&amp; right == false)
@@ -179,7 +180,6 @@ if (gen == true)
             door.room_id = rooms_generated + 1
             gemx += 1920
             instance_create(gemx, gemy, Wall_obj)
-            
             if (rantype &lt; 50)//mob room
             {
                 script_generate_monster(gemx + 1576, gemy + 196, obj_monster, rooms_generated + 1)
@@ -211,7 +211,6 @@ if (gen == true)
             door.room_id = rooms_generated + 1
             gemx -= 1920
             instance_create(gemx, gemy, Wall_obj)
-            
             if (rantype &lt; 50)//mob room
             {
                 script_generate_monster(gemx + 1576, gemy + 196, obj_monster, rooms_generated + 1)
@@ -230,7 +229,6 @@ if (gen == true)
             }
             
             instance_create(gemx+1620/*1920 - taille de porte*/, gemy+540, Door_right_obj)
-
             instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }         
     }
