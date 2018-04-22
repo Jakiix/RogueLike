@@ -27,12 +27,10 @@
             <kind>1</kind>
             <string>if (image_index == 0 &amp;&amp; place_meeting(x,y, Player_obj))
 {
-    show_debug_message("TOP");
+    Player_obj.verticalY += 1080
     event_inherited();
     with(obj_map)
-    {
         y -= 1080
-    }
     obj_mini_map.yPosition -= 1080;
     if (!instance_position(obj_mini_map.xPosition, obj_mini_map.yPosition - 37, obj_map))
     {
@@ -40,16 +38,12 @@
     }
     obj_mini_map.yPosition -= 37;
     with(obj_player_position)
-    {
         y = obj_mini_map.yPosition
-    }
     
     Player_obj.room_id = room_id
     view_yview[0] -= 1080;
     with (Player_obj)
-    {
         y -= 500;
-    }
 }
 </string>
           </argument>

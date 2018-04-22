@@ -32,6 +32,7 @@ instance_create(x, y, obj_shot);
 firing = false
 
 hp = 50
+maxhp = hp
 bounce = 0
 </string>
           </argument>
@@ -103,7 +104,7 @@ firing = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = irandom_range(0, 359);
+            <string>direction = choose(0, 90, 180, 270);
 speed = 3;
 alarm[0] = 40;
 </string>
@@ -170,6 +171,29 @@ if (hp &lt;= 0)
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="Pikachu_obj">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hp -= 0.1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="Wall_obj">
       <action>
         <libid>1</libid>
@@ -192,6 +216,30 @@ if (hp &lt;= 0)
           <argument>
             <kind>4</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+draw_healthbar(x - 10, y - 32 , x + 10, y - 34, maxhp, c_red, c_red, c_green, 0, true, true);
+</string>
           </argument>
         </arguments>
       </action>

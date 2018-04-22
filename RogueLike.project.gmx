@@ -9,38 +9,56 @@
     <sound>sound\denver</sound>
     <sound>sound\Ambiance1</sound>
     <sound>sound\Fap</sound>
+    <sound>sound\Fap_floor</sound>
     <sound>sound\snd_theme_Menu</sound>
     <sound>sound\snd_theme_room1</sound>
+    <sounds name="Room">
+      <sound>sound\DoorOpened</sound>
+      <sound>sound\DoorLocked</sound>
+      <sound>sound\TakeItem</sound>
+      <sound>sound\TakeCoin</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
-      <sprite>sprites\new_shot</sprite>
       <sprite>sprites\Isaac_fat</sprite>
-      <sprite>sprites\anim</sprite>
-      <sprite>sprites\body_laser</sprite>
-      <sprite>sprites\head_laser</sprite>
+      <sprites name="Shots">
+        <sprite>sprites\new_shot</sprite>
+        <sprite>sprites\anim</sprite>
+        <sprite>sprites\spr_laser</sprite>
+        <sprite>sprites\spr_laser_end</sprite>
+        <sprite>sprites\test_laser</sprite>
+      </sprites>
     </sprites>
     <sprites name="Ennemies">
       <sprite>sprites\Monster_red</sprite>
-      <sprite>sprites\Shot</sprite>
-      <sprite>sprites\sprite42</sprite>
       <sprite>sprites\Boss</sprite>
       <sprite>sprites\Skull</sprite>
-      <sprite>sprites\anim_blood_tear</sprite>
-      <sprite>sprites\Dead_animation</sprite>
       <sprite>sprites\spectrum</sprite>
-      <sprite>sprites\blood</sprite>
-      <sprite>sprites\boomrang</sprite>
+      <sprites name="Shots">
+        <sprite>sprites\boomrang</sprite>
+        <sprite>sprites\anim_blood_tear</sprite>
+        <sprite>sprites\Shot</sprite>
+        <sprite>sprites\sprite42</sprite>
+        <sprite>sprites\Explosion</sprite>
+        <sprite>sprites\Blood</sprite>
+        <sprite>sprites\Dead_animation</sprite>
+      </sprites>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\Pizza</sprite>
       <sprite>sprites\Pepsi</sprite>
+      <sprite>sprites\Cap</sprite>
+      <sprite>sprites\Fritas</sprite>
+      <sprite>sprites\Mushroom</sprite>
+      <sprite>sprites\Ruby</sprite>
+      <sprite>sprites\Spinny</sprite>
+      <sprite>sprites\Triforce</sprite>
+      <sprite>sprites\Water</sprite>
+      <sprite>sprites\Coins</sprite>
+      <sprite>sprites\Pikachu</sprite>
     </sprites>
     <sprites name="Chest">
-      <sprite>sprites\Chest_red_closed</sprite>
-      <sprite>sprites\Chest_red_opened</sprite>
-      <sprite>sprites\Chest_green_closed</sprite>
-      <sprite>sprites\Chest_green_opened</sprite>
       <sprite>sprites\Chest_brown_closed</sprite>
       <sprite>sprites\Chest__brown_opened</sprite>
     </sprites>
@@ -59,17 +77,21 @@
       <sprite>sprites\bar</sprite>
     </sprites>
     <sprites name="Scenery">
+      <sprite>sprites\light</sprite>
       <sprite>sprites\Wall</sprite>
-      <sprite>sprites\spr_change_room</sprite>
       <sprite>sprites\isaac_door</sprite>
       <sprite>sprites\isaac_door_left</sprite>
       <sprite>sprites\isaac_door_right</sprite>
       <sprite>sprites\isaac_door_bottom</sprite>
       <sprite>sprites\isaac_wall</sprite>
-      <sprite>sprites\room_map</sprite>
-      <sprite>sprites\star</sprite>
-      <sprite>sprites\light</sprite>
       <sprite>sprites\spr_change_room_previous</sprite>
+      <sprite>sprites\spr_change_room</sprite>
+      <sprites name="Minimap">
+        <sprite>sprites\room_map</sprite>
+        <sprite>sprites\star</sprite>
+      </sprites>
+      <sprite>sprites\wall2</sprite>
+      <sprite>sprites\attack_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -78,12 +100,15 @@
     <background>background\options_bkg</background>
     <background>background\controls_bkg</background>
     <background>background\sound_bkg</background>
+    <background>background\background5</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\script_generate_monsters.gml</script>
     <script>scripts\script_generate_monster.gml</script>
     <script>scripts\script_PowerUp.gml</script>
+    <script>scripts\scr_draw_laser.gml</script>
+    <script>scripts\instance_in_view.gml</script>
     <scripts name="Menu">
       <script>scripts\scr_menu.gml</script>
       <script>scripts\scr_menu_option.gml</script>
@@ -114,15 +139,12 @@
     </objects>
     <objects name="Ennemies">
       <object>objects\obj_parent_monster</object>
+      <object>objects\Test_ennemy</object>
       <object>objects\obj_monster</object>
       <object>objects\obj_monster_shot</object>
       <object>objects\obj_boss_1</object>
       <object>objects\obj_monsteshot_big</object>
       <object>objects\obj_monstershot_boomrang</object>
-      <object>objects\obj_shot</object>
-      <object>objects\obj_end_ennemy_shot</object>
-      <object>objects\obj_dead_animation</object>
-      <object>objects\obj_blood</object>
       <objects name="Shot">
         <object>objects\obj_shot_boomrang</object>
         <object>objects\obj_shot_big</object>
@@ -133,6 +155,13 @@
         <object>objects\obj_laser_head</object>
         <object>objects\obj_laser_shot</object>
       </objects>
+      <objects name="Effect">
+        <object>objects\obj_blood</object>
+        <object>objects\Explosion_obj</object>
+        <object>objects\obj_dead_animation</object>
+        <object>objects\obj_end_ennemy_shot</object>
+        <object>objects\obj_shot</object>
+      </objects>
     </objects>
     <objects name="Scenary">
       <object>objects\Wall_obj</object>
@@ -140,20 +169,30 @@
       <object>objects\obj_change_room_previous</object>
     </objects>
     <objects name="Items">
+      <object>objects\obj_light</object>
       <object>objects\obj_parent_items</object>
       <object>objects\Pizza_obj</object>
       <object>objects\Pepsi_obj</object>
-      <object>objects\obj_light</object>
+      <object>objects\Cap_obj</object>
+      <object>objects\Fritas_obj</object>
+      <object>objects\Mushroom_obj</object>
+      <object>objects\Ruby_obj</object>
+      <object>objects\Spinny_obj</object>
+      <object>objects\Triforce_obj</object>
+      <object>objects\Water_obj</object>
+      <object>objects\Coin_obj</object>
+      <object>objects\Pikachu_obj</object>
     </objects>
     <objects name="Game">
       <object>objects\FullScreen</object>
-      <object>objects\Random_generation0</object>
       <object>objects\Random_generation</object>
       <object>objects\Pause_obj</object>
       <object>objects\Stats</object>
       <object>objects\obj_mini_map</object>
-      <object>objects\obj_map</object>
+      <object>objects\Grid_obj</object>
+      <object>objects\obj_mob_room</object>
       <object>objects\obj_player_position</object>
+      <object>objects\obj_map</object>
     </objects>
     <objects name="Menu">
       <objects name="Main">

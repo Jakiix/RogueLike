@@ -2,13 +2,13 @@
 <sprite>
   <type>0</type>
   <xorig>25</xorig>
-  <yorigin>24</yorigin>
+  <yorigin>26</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>7</bbox_left>
-  <bbox_right>56</bbox_right>
+  <bbox_left>0</bbox_left>
+  <bbox_right>49</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>51</bbox_bottom>
   <HTile>0</HTile>
@@ -17,8 +17,8 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>66</width>
-  <height>63</height>
+  <width>50</width>
+  <height>52</height>
   <frames>
     <frame index="0">images\Skull_0.png</frame>
     <frame index="1">images\Skull_1.png</frame>

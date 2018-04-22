@@ -64,6 +64,16 @@ else if (y &gt; (Yposition + 800) || y &lt; (Yposition - 800))
     instance_destroy();
     instance_create(x, y, obj_end_shot);
 }
+
+if (Player_obj.spinny == true)
+{
+    nearestmob = instance_nearest(x, y, obj_parent_monster)
+    if (nearestmob != noone)
+    {
+        if (instance_in_view(nearestmob) == true)
+            move_towards_point(nearestmob.x, nearestmob.y, 5);
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -26,10 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-hp = 20
+hp = 100
 bounce = 0;
 canattack = true;
 image_speed = 0.3
+path = path_add();
 </string>
           </argument>
         </arguments>
@@ -81,7 +82,7 @@ if (Player_obj.room_id == room_id)
 {
     if (canattack == true)
     {
-        move_towards_point(Player_obj.x, Player_obj.y, Player_obj.movespeed * 0.50)   
+        move_towards_point(Player_obj.x, Player_obj.y, Player_obj.movespeed * 0.50)
     }
 }
 else
@@ -93,6 +94,8 @@ if (place_meeting(x, y, Player_obj))
 {
     Player_obj.hp--
     instance_destroy()
+    instance_create(x, y, Explosion_obj);
+    instance_create(x, y, obj_blood);
 }
 
 if (place_meeting(x, y, obj_parent_shot))
@@ -108,6 +111,7 @@ if (place_meeting(x, y, obj_parent_shot))
         {
             instance_destroy()
             instance_create(x, y, obj_end_shot);
+            audio_play_sound(Fap, 10, false);
         }
     }
 }
@@ -125,6 +129,53 @@ if (hp &lt;= 0)
     instance_create(x, y, obj_dead_animation);
     instance_create(x, y, obj_blood);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="Pikachu_obj">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hp -= 0.1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+draw_healthbar(x - 10, y - 22 , x + 10, y - 24, hp, c_dkgray, c_red, c_green, 0, true, true);
 </string>
           </argument>
         </arguments>

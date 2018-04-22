@@ -48,7 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
+            <string>audio_play_sound(Fap_floor, 10, false);
+instance_destroy();
 </string>
           </argument>
         </arguments>

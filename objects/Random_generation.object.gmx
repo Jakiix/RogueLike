@@ -96,7 +96,7 @@ if (gen == true)
 
         rantype = irandom(100)
         rngroom = irandom(3)
-        rooms_generated+=1
+        rooms_generated++;
 
         if (rooms_generated &gt;= 20)
         {
@@ -109,30 +109,28 @@ if (gen == true)
             left = false
             right = false
 
-            door = instance_create(gemx+960, gemy + 78, Door_top_obj)
+            door = instance_create(gemx + 960, gemy + 78, Door_top_obj)
             door.room_id = rooms_generated + 1
             gemy -= 1080
             instance_create(gemx, gemy, Wall_obj)
             
             if (rantype &lt; 50)//mob room
             {
-                script_generate_monster(gemx + 1576, gemy + 196, obj_monster, rooms_generated + 1)
-                script_generate_monsters(gemx, gemy, obj_boss_1, rooms_generated + 1)
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
             }
             else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
             {
                 isPowerUp = true;
-                randomPowerUp = irandom(1);
+                randomPowerUp = irandom(8);
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else // random 
+            else //empty
             {
-                //empty room
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
             }
-            door = instance_create(gemx+960, gemy+900, Door_bottom_obj)
+            door = instance_create(gemx + 960, gemy + 900, Door_bottom_obj)
             door.room_id = rooms_generated
-
             //instance_create(gemx+960, (gemy+900) / 2, obj_change_room)
         }
         if (rngroom == 1 &amp;&amp; down == false)
@@ -145,29 +143,24 @@ if (gen == true)
             door = instance_create(gemx+960, gemy+900, Door_bottom_obj)
             door.room_id = rooms_generated + 1
             gemy += 1080
-            instance_create(gemx, gemy, Wall_obj)
-            
+            instance_create(gemx, gemy, Wall_obj)        
             if (rantype &lt; 50)//mob room
             {
-                script_generate_monster(gemx + 1576, gemy + 196, obj_monster, rooms_generated + 1)
-                script_generate_monsters(gemx, gemy, obj_boss_1, rooms_generated + 1)
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
             }
             else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
             {
                 isPowerUp = true;
-                randomPowerUp = irandom(1);
+                randomPowerUp = irandom(8);
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else // random 
+            else //empty
             {
-                //empty room
-            }
-            
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
+            }  
             instance_create(gemx+960, gemy + 78, Door_top_obj)
-
-            instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
-
+            //instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }
 
         if (rngroom == 2 &amp;&amp; right == false)
@@ -184,25 +177,23 @@ if (gen == true)
 
             if (rantype &lt; 50)//mob room
             {
-                script_generate_monster(gemx + 1576, gemy + 196, obj_monster, rooms_generated + 1)
-                script_generate_monsters(gemx, gemy, obj_boss_1, rooms_generated + 1)
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
             }
             else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
             {
                 isPowerUp = true;
-                randomPowerUp = irandom(1);
+                randomPowerUp = irandom(8);
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else // random 
+            else //empty
             {
-                //empty room
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
             }
+            instance_create(gemx + 170, gemy + 540, Door_left_obj)
+            //instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
+        }
             
-
-            instance_create(gemx + 170, gemy+540, Door_left_obj)
-            instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
-        }     
         if (rngroom == 3 &amp;&amp; left == false)
         {
             up = false
@@ -210,30 +201,29 @@ if (gen == true)
             left = false
             right = true
 
-            door = instance_create(gemx + 170, gemy+540, Door_left_obj)
+            door = instance_create(gemx + 170, gemy + 540, Door_left_obj)
             door.room_id = rooms_generated + 1
             gemx -= 1920
             instance_create(gemx, gemy, Wall_obj)
 
             if (rantype &lt; 50)//mob room
             {
-                script_generate_monster(gemx + 1576, gemy + 196, obj_monster, rooms_generated + 1)
-                script_generate_monsters(gemx, gemy, obj_boss_1, rooms_generated + 1)
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
             }
             else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
             {
                 isPowerUp = true;
-                randomPowerUp = irandom(1);
+                randomPowerUp = irandom(8);
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else // random 
+            else //empty
             {
-                //empty room
+                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
             }
 
-            instance_create(gemx+1620/*1920 - taille de porte*/, gemy+540, Door_right_obj)
-            instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
+            instance_create(gemx + 1640, gemy + 540, Door_right_obj)
+            //instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }         
     }
     until (rooms_generated &gt;= 5)

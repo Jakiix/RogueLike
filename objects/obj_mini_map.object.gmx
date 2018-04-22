@@ -52,7 +52,17 @@ instance_create(xPosition, yPosition, obj_player_position);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>if (obj_map.x &gt; view_xview[0] + view_wview[0])
+{
+    with(obj_map)
+        x -= 66
+}
+else if (obj_map.y &lt; view_yview[0])
+{
+    with(obj_map)
+        y += 37
+}
+</string>
           </argument>
         </arguments>
       </action>

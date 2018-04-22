@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>if (image_index == 0 &amp;&amp; place_meeting(x,y, Player_obj))
 {
-    show_debug_message("BOT");
+    Player_obj.verticalY -= 1080
     event_inherited();
     with(obj_map)
     {
