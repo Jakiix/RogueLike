@@ -30,7 +30,7 @@ speed = 1
 enemies = true;
 xPosition = x;
 yPosition = y;
-move_towards_point(x + 1000, y + 1000, 20);
+move_towards_point(x + 1000, y + 1000, 7);
   
 
 </string>

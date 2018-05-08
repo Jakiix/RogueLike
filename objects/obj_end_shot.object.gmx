@@ -25,7 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1;
+            <string>if (Player_obj.big_shot == true)
+{
+    image_xscale += 0.25
+    image_yscale += 0.25
+}
+if (Player_obj.spinny == true)
+{
+    image_blend = c_purple;
+}
+image_speed = 1;
 </string>
           </argument>
         </arguments>

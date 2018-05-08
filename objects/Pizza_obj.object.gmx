@@ -79,7 +79,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Player_obj.attack += 20;
+            <string>Player_obj.attack += 3;
 instance_destroy();
 </string>
           </argument>

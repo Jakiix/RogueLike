@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = global.dir;
+            <string>if (Player_obj.big_shot == true)
+{
+    image_xscale += 0.25
+    image_yscale += 0.25  
+}
+direction = global.dir;
 speed = 10;
 image_speed = 0.09
 damage = Player_obj.attack;
@@ -54,7 +59,18 @@ Yposition = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (x &gt; (Xposition + 800) || x &lt; (Xposition - 800))
+            <string>if(global.Pause) 
+{
+    image_speed = 0
+    speed = 0
+    exit;
+}
+else
+{
+    speed = 10;
+    image_speed = 0.09
+}
+if (x &gt; (Xposition + 800) || x &lt; (Xposition - 800))
 {
     instance_destroy();
     instance_create(x, y, obj_end_shot);
@@ -67,10 +83,11 @@ else if (y &gt; (Yposition + 800) || y &lt; (Yposition - 800))
 
 if (Player_obj.spinny == true)
 {
+    image_blend = c_purple
     nearestmob = instance_nearest(x, y, obj_parent_monster)
     if (nearestmob != noone)
     {
-        if (instance_in_view(nearestmob) == true)
+        if (instance_in_view(nearestmob, view_xview[0], view_yview[0]) == true)
             move_towards_point(nearestmob.x, nearestmob.y, 5);
     }
 }

@@ -27,10 +27,8 @@
             <kind>1</kind>
             <string>event_inherited()
 image_speed = 0.2
-hp = 100
-speed = 2
-maxhp = hp
-path = path_add();
+hp = 15
+canattack = true;
 pattern = 4;
 
 bounce = 0
@@ -83,7 +81,7 @@ firing = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 2;
+            <string>speed = 0;
 canattack = true;
 </string>
           </argument>
@@ -107,14 +105,22 @@ canattack = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.Pause) exit;
+            <string>if(global.Pause) 
+{
+    image_speed = 0
+    speed = 0
+    exit;
+}
+else
+{
+    speed = 2;
+    image_speed = 0.2
+}
+image_blend = c_white
 
 if (Player_obj.room_id == room_id)
 {
-    if (mp_grid_path(global.grid, path, x, y, (Player_obj.x div 16) * 16 + 8, (Player_obj.y div 16) * 16 + 8, 0))
-    {
-        path_start(path, 2, path_action_stop, false); 
-    }
+    move_towards_point(Player_obj.x, Player_obj.y, 2);
     if (firing == false)
     {
         if (pattern &gt; 0)
@@ -140,11 +146,11 @@ if (place_meeting(x, y, obj_parent_shot))
     nearest_enemy = instance_nearest(x, y, obj_parent_shot)
     if (nearest_enemy.enemies == false)
     {
-        path = path_end();
-        test = false;
         direction = point_direction(x, y, nearest_enemy.x, nearest_enemy.y) + 180;
         bounce = 1;
         hp -= nearest_enemy.damage
+        if (image_blend != c_red)
+            image_blend = c_red;
         with (nearest_enemy)
         {
             instance_destroy()
@@ -158,6 +164,7 @@ if (bounce == 1)
     alarm[0] = 10;
     speed = 2
     bounce = 0;
+    canattack = false;
 }
 
 if (hp &lt;= 0)
@@ -171,7 +178,7 @@ if (hp &lt;= 0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="Pikachu_obj">
+    <event eventtype="4" ename="Thunder_obj">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -188,8 +195,34 @@ if (hp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hp -= 0.1
+            <string>hp -= 50
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_rock">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -216,30 +249,6 @@ if (hp &lt;= 0)
           <argument>
             <kind>4</kind>
             <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self();
-draw_healthbar(x - 10, y - 22 , x + 10, y - 24, hp, c_dkgray, c_red, c_green, 0, true, true);
-</string>
           </argument>
         </arguments>
       </action>

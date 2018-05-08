@@ -1,6 +1,8 @@
 obj = argument0
+xPos = argument1
+yPos = argument2
 
-if  obj.x > view_xview[0] + 169 and obj.y > view_yview[0] + 253 and obj.x < view_xview[0] + view_wview[0] - 169 and obj.y < view_yview[0] + view_hview[0] - 253
+if  obj.x > xPos + 169 and obj.y > yPos + 253 and obj.x < xPos + view_wview[0] - 169 and obj.y < yPos + view_hview[0] - 253
     return true
 else
     return false

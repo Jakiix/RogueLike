@@ -31,7 +31,7 @@ alarm[0] = 40
 instance_create(x, y, obj_shot);
 firing = false
 
-hp = 50
+hp = 25
 maxhp = hp
 bounce = 0
 </string>
@@ -130,8 +130,10 @@ alarm[0] = 40;
           <argument>
             <kind>1</kind>
             <string>if(global.Pause) exit;
+image_blend = c_white;
 if (firing == false &amp;&amp; Player_obj.room_id == room_id)
 {
+    show_debug_message("OUI");
     firing = true;
     alarm[1] = 40;
 }
@@ -145,6 +147,8 @@ if (place_meeting(x, y, obj_parent_shot))
         direction = point_direction(x, y, nearest_enemy.x, nearest_enemy.y) + 180;
         bounce = 1;
         hp -= nearest_enemy.damage;
+        if (image_blend != c_red)
+            image_blend = c_red;
         with (nearest_enemy)
         {
             instance_destroy();
@@ -171,7 +175,7 @@ if (hp &lt;= 0)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="Pikachu_obj">
+    <event eventtype="4" ename="Thunder_obj">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -188,8 +192,60 @@ if (hp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hp -= 0.1
+            <string>hp -= 50
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_rock">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="Wall_obj2">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -216,30 +272,6 @@ if (hp &lt;= 0)
           <argument>
             <kind>4</kind>
             <string>0</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self();
-draw_healthbar(x - 10, y - 32 , x + 10, y - 34, maxhp, c_red, c_red, c_green, 0, true, true);
-</string>
           </argument>
         </arguments>
       </action>

@@ -31,7 +31,7 @@ enemies = true;
 xPosition = x;
 yPosition = y;
 directions = 1;
-move_towards_point(x + 1000, y - 1000, 20);
+move_towards_point(x + 1000, y - 1000, 7);
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1.2
+            <string>speed = 1
+image_speed = speed / 4
 </string>
           </argument>
         </arguments>
@@ -48,19 +49,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.Pause)
-    image_speed = 0;
+            <string>if(global.Pause) 
+{
+    image_speed = 0
+    speed = 0
+    exit;
+}
 else
-    image_speed = 0.08;
+{
+    speed = 1;
+    image_speed = speed / 4
+}
 
 nearestmob = instance_nearest(x, y, obj_parent_monster);
 if (nearestmob != noone)
 {
-    if (instance_in_view(nearestmob) == true)
+    if (instance_in_view(nearestmob, view_xview[0], view_yview[0]) == true)
     {    
-        move_towards_point(nearestmob.x, nearestmob.y, 6);
+        move_towards_point(nearestmob.x, nearestmob.y, speed);
     }
 }
+
+if (direction &gt;= 135 &amp;&amp; direction &lt; 225)//left
+{
+    sprite_index = Pikachu_left;
+}
+else//right
+{
+    sprite_index = Pikachu;
+}
+
 </string>
           </argument>
         </arguments>
@@ -88,6 +106,30 @@ if (nearestmob != noone)
           <argument>
             <kind>4</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_parent_monster">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
+instance_create(x, y, Thunder_obj);
+</string>
           </argument>
         </arguments>
       </action>

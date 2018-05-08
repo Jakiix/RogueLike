@@ -79,6 +79,7 @@ else
           <argument>
             <kind>1</kind>
             <string>//changer les tirs en frites + 2 attack
+Player_obj.big_shot = true;
 instance_destroy();
 </string>
           </argument>

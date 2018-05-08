@@ -27,14 +27,21 @@
         <sprite>sprites\anim</sprite>
         <sprite>sprites\spr_laser</sprite>
         <sprite>sprites\spr_laser_end</sprite>
-        <sprite>sprites\test_laser</sprite>
       </sprites>
     </sprites>
     <sprites name="Ennemies">
       <sprite>sprites\Monster_red</sprite>
-      <sprite>sprites\Boss</sprite>
       <sprite>sprites\Skull</sprite>
+      <sprite>sprites\Ghost</sprite>
       <sprite>sprites\spectrum</sprite>
+      <sprite>sprites\Bat</sprite>
+      <sprites name="Pacman">
+        <sprite>sprites\Pacman_end</sprite>
+        <sprite>sprites\Pacman_down</sprite>
+        <sprite>sprites\Pacman_left</sprite>
+        <sprite>sprites\Pacman_right</sprite>
+        <sprite>sprites\Pacman_up</sprite>
+      </sprites>
       <sprites name="Shots">
         <sprite>sprites\boomrang</sprite>
         <sprite>sprites\anim_blood_tear</sprite>
@@ -57,6 +64,9 @@
       <sprite>sprites\Water</sprite>
       <sprite>sprites\Coins</sprite>
       <sprite>sprites\Pikachu</sprite>
+      <sprite>sprites\Pikachu_left</sprite>
+      <sprite>sprites\HP</sprite>
+      <sprite>sprites\Thunder</sprite>
     </sprites>
     <sprites name="Chest">
       <sprite>sprites\Chest_brown_closed</sprite>
@@ -74,6 +84,7 @@
       <sprite>sprites\keyController</sprite>
       <sprite>sprites\save_button</sprite>
       <sprite>sprites\cursor</sprite>
+      <sprite>sprites\Title_spr</sprite>
       <sprite>sprites\bar</sprite>
     </sprites>
     <sprites name="Scenery">
@@ -86,12 +97,21 @@
       <sprite>sprites\isaac_wall</sprite>
       <sprite>sprites\spr_change_room_previous</sprite>
       <sprite>sprites\spr_change_room</sprite>
+      <sprite>sprites\wall2</sprite>
+      <sprite>sprites\attack_spr</sprite>
+      <sprite>sprites\Rock</sprite>
+      <sprite>sprites\heart</sprite>
       <sprites name="Minimap">
         <sprite>sprites\room_map</sprite>
         <sprite>sprites\star</sprite>
       </sprites>
-      <sprite>sprites\wall2</sprite>
-      <sprite>sprites\attack_spr</sprite>
+      <sprites name="Layout">
+        <sprite>sprites\Layout1</sprite>
+        <sprite>sprites\Layout2</sprite>
+        <sprite>sprites\Layout3</sprite>
+        <sprite>sprites\Layout4</sprite>
+      </sprites>
+      <sprite>sprites\Wall3</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -101,6 +121,7 @@
     <background>background\controls_bkg</background>
     <background>background\sound_bkg</background>
     <background>background\background5</background>
+    <background>background\background6</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -109,6 +130,9 @@
     <script>scripts\script_PowerUp.gml</script>
     <script>scripts\scr_draw_laser.gml</script>
     <script>scripts\instance_in_view.gml</script>
+    <script>scripts\GenerateRock1.gml</script>
+    <script>scripts\GenerateRandomBlock.gml</script>
+    <script>scripts\random_pickup.gml</script>
     <scripts name="Menu">
       <script>scripts\scr_menu.gml</script>
       <script>scripts\scr_menu_option.gml</script>
@@ -141,10 +165,10 @@
       <object>objects\obj_parent_monster</object>
       <object>objects\Test_ennemy</object>
       <object>objects\obj_monster</object>
-      <object>objects\obj_monster_shot</object>
       <object>objects\obj_boss_1</object>
       <object>objects\obj_monsteshot_big</object>
       <object>objects\obj_monstershot_boomrang</object>
+      <object>objects\obj_pacman</object>
       <objects name="Shot">
         <object>objects\obj_shot_boomrang</object>
         <object>objects\obj_shot_big</object>
@@ -161,12 +185,21 @@
         <object>objects\obj_dead_animation</object>
         <object>objects\obj_end_ennemy_shot</object>
         <object>objects\obj_shot</object>
+        <object>objects\obj_pacman_end</object>
       </objects>
     </objects>
     <objects name="Scenary">
       <object>objects\Wall_obj</object>
+      <object>objects\Wall_obj2</object>
       <object>objects\obj_change_room</object>
       <object>objects\obj_change_room_previous</object>
+      <object>objects\obj_rock</object>
+      <object>objects\Layout1_obj</object>
+      <object>objects\Layout2_obj</object>
+      <object>objects\Layout3_obj</object>
+      <object>objects\Layout4_obj</object>
+      <object>objects\Layout_obj_parent</object>
+      <object>objects\Wall_parent</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_light</object>
@@ -182,15 +215,17 @@
       <object>objects\Water_obj</object>
       <object>objects\Coin_obj</object>
       <object>objects\Pikachu_obj</object>
+      <object>objects\obj_HP</object>
+      <object>objects\Thunder_obj</object>
     </objects>
     <objects name="Game">
       <object>objects\FullScreen</object>
       <object>objects\Random_generation</object>
+      <object>objects\Random_generation2</object>
       <object>objects\Pause_obj</object>
       <object>objects\Stats</object>
       <object>objects\obj_mini_map</object>
       <object>objects\Grid_obj</object>
-      <object>objects\obj_mob_room</object>
       <object>objects\obj_player_position</object>
       <object>objects\obj_map</object>
     </objects>
@@ -235,6 +270,7 @@
         <object>objects\obj_back_control_button</object>
         <object>objects\obj_save_button</object>
       </objects>
+      <object>objects\Title</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -247,7 +283,7 @@
     </rooms>
     <room>rooms\Level</room>
     <room>rooms\Level_2</room>
-    <room>rooms\Level_3</room>
+    <room>rooms\room7</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -15,7 +15,7 @@ switch (argument3)
         while (i <= nbsprite)
         {
             if (yposition == argument2)
-                draw_sprite(test_laser, frame, xposition, yposition);
+                draw_sprite(spr_laser, frame, xposition, yposition);
             else
                 draw_sprite(spr_laser, frame, xposition, yposition);
             yposition -= 64

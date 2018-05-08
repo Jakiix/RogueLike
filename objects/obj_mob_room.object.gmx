@@ -27,11 +27,35 @@
             <kind>1</kind>
             <string>randomize();
 
-ranamount = irandom(3); //random mob number 0-4
+room_id = 0
+gemx = x - (view_wview[0] / 2) + 262
+gemy = y - (view_hview[0] / 2) + 171
 spawned = false; //used to say if we're finished spawning
-
-amount = 0; // amount spawned
 doorslocked = false; // obviously used to unlock the doors
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>script_generate_monsters(gemx, gemy, Test_ennemy, room_id)
+spawned = true;
 </string>
           </argument>
         </arguments>
@@ -54,35 +78,17 @@ doorslocked = false; // obviously used to unlock the doors
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (spawned == false)
+            <string>if (Player_obj.room_id == room_id and spawned == false)// if player has entered the room
 {
-    if (distance_to_object(Player_obj) &lt; 600)// if player has entered the room
-    {
-        
-        ranmonster = irandom(1);
-        ranx = random_range(x - 384, x + 320);
-        rany = random_range(y - 256, y + 192);
-        if (amount &gt;= ranamount)
-        {
-            spawned = true;
-        }
-        if (ranmonster == 0 &amp;&amp; place_empty(ranx, rany))
-        {
-            instance_create(ranx, rany, Test_ennemy);
-            amount++;
-        }
-        if (ranmonster == 1 &amp;&amp; place_empty(ranx, rany))
-        {
-            instance_create(ranx, rany, obj_boss_1);
-            amount++;
-        }
-    }
+    alarm[0] = 40
+    spawned = true;
 }
 
 var nearestEnemy;
 nearestEnemy = instance_nearest(x, y, obj_parent_monster);
 
-if (instance_number(obj_parent_monster) != 0)
+//if (instance_number(obj_parent_monster) != 1)
+if (instance_in_view(obj_parent_monster, x - (view_wview[0] / 2), y - (view_hview[0] / 2) == true))
 {
     if (doorslocked != true)
     {

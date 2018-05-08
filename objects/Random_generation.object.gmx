@@ -29,6 +29,7 @@
 instance_create(0,0, Wall_obj); // create room
 
 rooms_generated = 0;
+id_boss = 0
 gemx = 0;
 gemy = 0;
 gen = true;
@@ -37,9 +38,8 @@ up = false;
 down = false;
 left = false;
 right = false;
-
-powerup[0] = "Pepsi"
-powerup[1] = "Pizza"
+randomize();
+nbRoom = choose(7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17);
 
 audio_play_sound(snd_theme_room1, 10, false);
 </string>
@@ -87,18 +87,17 @@ audio_play_sound(snd_theme_room1, 10, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomize() // makes it rng
+            <string>
+
+randomize() // makes it rng
 
 if (gen == true)
 {
-    do
+    while (rooms_generated &lt; nbRoom)
     {
-
         rantype = irandom(100)
         rngroom = irandom(3)
-        rooms_generated++;
-
-        if (rooms_generated &gt;= 20)
+        if (rooms_generated &gt;= nbRoom)
         {
             gen = false
         }
@@ -112,26 +111,30 @@ if (gen == true)
             door = instance_create(gemx + 960, gemy + 78, Door_top_obj)
             door.room_id = rooms_generated + 1
             gemy -= 1080
+            rooms_generated++;
             instance_create(gemx, gemy, Wall_obj)
-            
-            if (rantype &lt; 50)//mob room
+            if (rooms_generated = nbRoom)//boss room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
+                id_boss = rooms_generated
+                ds_list_add(Player_obj.list_mob_room, rooms_generated);
             }
-            else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
+            else if (rantype &lt; 50)//mob room
+            {
+                ds_list_add(Player_obj.list_mob_room, rooms_generated); 
+            }
+            else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) and isPowerUp = false ) //powerup room
             {
                 isPowerUp = true;
                 randomPowerUp = irandom(8);
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else //empty
+            else //rock room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
+                //GenerateRock1(gemx, gemy);
+                GenerateRandomBlock(gemx, gemy);
             }
             door = instance_create(gemx + 960, gemy + 900, Door_bottom_obj)
-            door.room_id = rooms_generated
-            //instance_create(gemx+960, (gemy+900) / 2, obj_change_room)
         }
         if (rngroom == 1 &amp;&amp; down == false)
         {
@@ -143,10 +146,16 @@ if (gen == true)
             door = instance_create(gemx+960, gemy+900, Door_bottom_obj)
             door.room_id = rooms_generated + 1
             gemy += 1080
+            rooms_generated++;
             instance_create(gemx, gemy, Wall_obj)        
-            if (rantype &lt; 50)//mob room
+            if (rooms_generated = nbRoom)//boss room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
+                id_boss = rooms_generated
+                ds_list_add(Player_obj.list_mob_room, rooms_generated);
+            }
+            else if (rantype &lt; 50)//mob room
+            {
+                ds_list_add(Player_obj.list_mob_room, rooms_generated);
             }
             else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
             {
@@ -155,12 +164,12 @@ if (gen == true)
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else //empty
+            else//block room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
-            }  
-            instance_create(gemx+960, gemy + 78, Door_top_obj)
-            //instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
+                //GenerateRock1(gemx, gemy);
+                GenerateRandomBlock(gemx, gemy);
+            }
+            instance_create(gemx + 960, gemy + 78, Door_top_obj)
         }
 
         if (rngroom == 2 &amp;&amp; right == false)
@@ -173,11 +182,16 @@ if (gen == true)
             door = instance_create(gemx +1640, gemy+540, Door_right_obj)
             door.room_id = rooms_generated + 1
             gemx += 1920
+            rooms_generated++;
             instance_create(gemx, gemy, Wall_obj)
-
-            if (rantype &lt; 50)//mob room
+            if (rooms_generated = nbRoom)//boss room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
+                id_boss = rooms_generated
+                ds_list_add(Player_obj.list_mob_room, rooms_generated);
+            }
+            else if (rantype &lt; 50)//mob room
+            {
+                ds_list_add(Player_obj.list_mob_room, rooms_generated);
             }
             else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
             {
@@ -186,12 +200,12 @@ if (gen == true)
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else //empty
+            else//block room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
+                //GenerateRock1(gemx, gemy);
+                GenerateRandomBlock(gemx, gemy);
             }
             instance_create(gemx + 170, gemy + 540, Door_left_obj)
-            //instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
         }
             
         if (rngroom == 3 &amp;&amp; left == false)
@@ -204,11 +218,17 @@ if (gen == true)
             door = instance_create(gemx + 170, gemy + 540, Door_left_obj)
             door.room_id = rooms_generated + 1
             gemx -= 1920
+            rooms_generated++;
             instance_create(gemx, gemy, Wall_obj)
 
-            if (rantype &lt; 50)//mob room
+            if (rooms_generated = nbRoom)//boss room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), obj_mob_room);
+                id_boss = rooms_generated
+                ds_list_add(Player_obj.list_mob_room, rooms_generated);
+            }
+            else if (rantype &lt; 50)//mob room
+            {
+                ds_list_add(Player_obj.list_mob_room, rooms_generated);
             }
             else if ((rantype &gt; 50 &amp;&amp; rantype &lt; 80) &amp;&amp; isPowerUp = false ) //powerup room
             {
@@ -217,16 +237,14 @@ if (gen == true)
                 script_PowerUp(randomPowerUp, gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2));
                 instance_create(gemx, gemy, obj_light);
             }
-            else //empty
+            else //block room
             {
-                instance_create(gemx + (view_wview[0] / 2), gemy + (view_hview[0] / 2), Coin_obj);
+                //GenerateRock1(gemx, gemy);
+                GenerateRandomBlock(gemx, gemy);
             }
-
             instance_create(gemx + 1640, gemy + 540, Door_right_obj)
-            //instance_create(gemx+960, (gemy+900) / 2, obj_change_room);
-        }         
+        }   
     }
-    until (rooms_generated &gt;= 5)
 }
 </string>
           </argument>

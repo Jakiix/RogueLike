@@ -51,7 +51,7 @@
             <string>draw_set_halign(fa_left);
 draw_set_font(fnt_options);
 draw_set_color(c_white);
-draw_sprite(Coins, 0, view_xview[0] + 30, view_yview[0] + 15 + 27);
+draw_sprite(heart, 0, view_xview[0] + 30, view_yview[0] + 15 + 27);
 draw_text(view_xview[0] + 40, view_yview[0] + 10, "HP : " + string(Player_obj.hp));
 draw_sprite(attack_spr, 0, view_xview[0] + 15, view_yview[0] + 5 + 77);
 draw_text(view_xview[0] + 40, view_yview[0] + 60, string(Player_obj.attack));

@@ -3,8 +3,8 @@
   <spriteName>Isaac_fat</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
-  <persistent>0</persistent>
+  <depth>0</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -26,12 +26,25 @@
           <argument>
             <kind>1</kind>
             <string>room_id = 0
+list_mob_room = ds_list_create();
+movespeed = 15
+image_speed = 0.20
+//image_speed = movespeed / 10
+Nfloor = 0
+Poped = 0
 
+
+doorslocked = false;
 global.dir = 0
 attack = 3
 defense = 3
 coins = 0
+pickup = false
 frame = 0;
+movingup = false;
+movingdown = false;
+movingright = false;
+movingleft = false;
 
 //laser meeting wall
 verticalY = 0  
@@ -42,8 +55,8 @@ laser = false
 triforce = false
 spinny = false
 pikachu = false
+big_shot = false
 
-movespeed = 15
 firing = false
 bounce = 0
 
@@ -52,7 +65,7 @@ canmove = true
 antistickx = 500
 antisticky = 500
 
-hp = 100
+hp = 10
 
 </string>
           </argument>
@@ -95,6 +108,55 @@ hp = 100
           <argument>
             <kind>0</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (Player_obj.Nfloor == 0)
+{
+    tmp = irandom(1)
+    switch (tmp)
+    {
+        case 0:
+            script_generate_monsters(view_xview[0] + 262, view_yview[0] + 171, Test_ennemy, Player_obj.room_id);
+            break;
+        case 1:
+            script_generate_monsters(view_xview[0] + 262, view_yview[0] + 171, obj_monster, Player_obj.room_id);
+            break;
+    }
+     
+}
+else if (Player_obj.Nfloor == 1)
+{
+    tmp = irandom(1)
+    switch (tmp)
+    {
+        case 0:
+            script_generate_monsters(view_xview[0] + 262, view_yview[0] + 171, obj_boss_1, Player_obj.room_id);
+            break;
+        case 1:
+            script_generate_monsters(view_xview[0] + 262, view_yview[0] + 171, obj_monsteshot_big, Player_obj.room_id);
+            break;
+    }
+}
+</string>
           </argument>
         </arguments>
       </action>
@@ -293,14 +355,24 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.Pause) 
+            <string>if (hp &lt;= 0)
+{
+    game_restart();
+}
+
+if(global.Pause) 
 {
     image_speed = 0;
-    exit;
+    exit
 }
 else
+    image_speed = 0.2
+    
+if (Player_obj.Nfloor == 1 and Poped == 0)
 {
-    image_speed = 0.20;
+    x = view_xview[0] + (1920 / 2)
+    y = view_yview[0] + (1080 / 2)
+    Poped = 1
 }
 
 if (keyboard_check(global.key_up) &amp;&amp; keyboard_check(global.key_left))
@@ -313,13 +385,133 @@ else if (keyboard_check(global.key_down) &amp;&amp; keyboard_check(global.key_ri
     movespeed = 5;
 else
     movespeed = 6;
-   
+
+pos = ds_list_find_index(Player_obj.list_mob_room, Player_obj.room_id)
+if (pos != -1)
+{
+    if (instance_exists(Random_generation) and Player_obj.room_id != Random_generation.id_boss)
+    {
+        alarm[3] = 50
+    }
+    else if (instance_exists(Random_generation2) and Player_obj.room_id != Random_generation2.id_boss)
+    {
+        alarm[3] = 50
+    }
+    else
+    {
+        if (place_empty(view_xview[0] + (view_wview[0] / 2), view_yview[0] + (view_hview[0] / 2)))
+            instance_create(view_xview[0] + (view_wview[0] / 2), view_yview[0] + (view_hview[0] / 2), obj_pacman);
+    }
+    ds_list_delete(Player_obj.list_mob_room, pos);
+}
+if (instance_exists(obj_parent_monster))
+{
+        if (doorslocked != true)
+        {
+            doorslocked = true;
+            audio_play_sound(DoorLocked, 10, false);
+        } 
+        with(Door_top_obj)
+            image_index = 1;
+        with(Door_bottom_obj)
+            image_index = 1;
+        with(Door_left_obj)
+            image_index = 1;
+        with(Door_right_obj)
+            image_index = 1;
+    }
+    else if (!instance_exists(obj_parent_monster))
+    {
+        if (doorslocked == true)
+        {
+            doorslocked = false;
+            audio_play_sound(DoorOpened, 10, false);
+            with(Pikachu_obj)
+            {
+                instance_destroy();
+            }
+        }
+        with(Door_top_obj)
+            image_index = 0;
+        with(Door_bottom_obj)
+            image_index = 0; 
+        with(Door_left_obj)
+            image_index = 0; 
+        with(Door_right_obj)
+            image_index = 0;
+        //random_pickup();
+    }
+
+    
 if (canmove == true)
 {
-    if (keyboard_check(global.key_up) &amp;&amp; !place_meeting(x, y - movespeed, obj_shot)) {y -= movespeed;}
-    if (keyboard_check(global.key_down) &amp;&amp; !place_meeting(x, y + movespeed, obj_shot)) {y += movespeed;}
-    if (keyboard_check(global.key_left) &amp;&amp; !place_meeting(x - movespeed, y, obj_shot)) {x -= movespeed;}
-    if (keyboard_check(global.key_right) &amp;&amp; !place_meeting(x + movespeed, y, obj_shot)) {x += movespeed;}
+    if (keyboard_check(global.key_up) &amp;&amp; !place_meeting(x, y - movespeed, obj_shot)) 
+    {
+        movingup = true;
+        movingdown = false;
+        movingleft = false;
+        movingright = false;
+        y -= movespeed;
+    }
+    if (keyboard_check(global.key_down) &amp;&amp; !place_meeting(x, y + movespeed, obj_shot)) 
+    {
+        movingup = false;
+        movingdown = true;
+        movingleft = false;
+        movingright = false;
+        y += movespeed;
+    }
+    if (keyboard_check(global.key_left) &amp;&amp; !place_meeting(x - movespeed, y, obj_shot)) 
+    {
+        movingup = false;
+        movingdown = false;
+        movingleft = true;
+        movingright = false;
+        x -= movespeed;
+    }
+    if (keyboard_check(global.key_right) &amp;&amp; !place_meeting(x + movespeed, y, obj_shot)) 
+    {
+        movingup = false;
+        movingdown = false;
+        movingleft = false;
+        movingright = true;
+        x += movespeed;
+    }
+}
+else {image_speed = 0;}
+
+if (movingup == true)
+{
+        if (image_index &gt;= 9)
+        {
+            image_index = 0;
+        }
+}
+else if (movingdown == true)
+{
+        if (image_index &gt;= 9)
+        {
+            image_index = 0;
+        }
+}
+else if (movingright == true)
+{
+        if (image_index &lt; 10 || image_index &gt; 19)
+        {
+            image_index = 10;
+        }
+}
+else if (movingleft == true)
+{
+        if (image_index &lt; 20)
+        {
+            image_index = 20;
+        }
+}
+
+if (x == xprevious &amp;&amp; y == yprevious)
+{
+    image_speed = 0;
 }
 
 if (laser == false)
@@ -362,6 +554,8 @@ if (laser == false)
     }
 }
 
+image_blend = c_white;
+
 if (place_meeting(x, y, obj_parent_monster))
 {
    var nearestEnemy;
@@ -380,6 +574,8 @@ else if (place_meeting(x, y, obj_parent_shot))
         bounce = 1;
         alarm[1] = 10;
         hp -= nearest_enemy.damage;
+        if (image_blend != c_red)
+            image_blend = c_red;
         if (object_is_ancestor(obj_shot_boomrang, obj_parent_shot) != true)
         {
             with (nearest_enemy)
@@ -396,58 +592,34 @@ if (bounce == 1)
     bounce = 0;
 }
 
+if (place_meeting(x, y, obj_parent_monster))
+{
+    x = antistickx;
+    y = antisticky;
+}
+else if (place_meeting(x, y, Wall_parent))
+{
+    x = antistickx;
+    y = antisticky;
+}
+else
+{
+    antistickx = x;
+    antisticky = y;
+}
+
 if (pikachu == true)
 {
-    var nearestmob;
-    nearestmob = instance_nearest(x, y, obj_parent_monster)
-    if (nearestmob != noone)
+    var nearestmob1;
+    nearestmob1 = instance_nearest(x, y, obj_parent_monster)
+    if (nearestmob1 != noone)
     {
-        if (instance_in_view(nearestmob) == true)
+        if (instance_in_view(nearestmob1, view_xview[0], view_yview[0]) == true)
         {
             if (!instance_exists(Pikachu_obj))
-                instance_create(x + 64, y, Pikachu_obj);
+                instance_create(x + 100, y, Pikachu_obj);
         }
     }
-}
-
-/*var nearestmob;
-nearestmob = instance_nearest(x, y, obj_parent_monster)
-if (nearestmob != noone)
-{  
-    if (instance_in_view(nearestmob) == true)
-    {   
-        show_debug_message("je ferme")   
-        doorslocked = true;
-        with(Door_top_obj) image_index = 1;
-        with(Door_bottom_obj) image_index = 1;
-        with(Door_left_obj) image_index = 1;
-        with(Door_right_obj) image_index = 1;
-        if (!instance_exists(Pikachu_obj))
-            instance_create(x + 64, y, Pikachu_obj)
-    } 
-    else
-    {   
-        show_debug_message("jouvre");
-        doorslocked = false;
-        with(Door_top_obj) image_index = 0;
-        with(Door_bottom_obj) image_index = 0;
-        with(Door_left_obj) image_index = 0;
-        with(Door_right_obj) image_index = 0;     
-    }
-}
-/*else
-{
-    doorslocked = false;
-    with(Door_top_obj) image_index = 0;
-    with(Door_bottom_obj) image_index = 0;
-    with(Door_left_obj) image_index = 0;
-    with(Door_right_obj) image_index = 0; 
-}*/
-
-
-if (hp &lt;= 0)
-{
-   room_goto(Menu);
 }
 
 </string>
@@ -478,7 +650,111 @@ if (hp &lt;= 0)
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="Layout_obj_parent">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_rock">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="Wall_obj2">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="Wall_obj">
+      <action>
+        <libid>1</libid>
+        <id>115</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_bounce</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_pacman">
       <action>
         <libid>1</libid>
         <id>115</id>

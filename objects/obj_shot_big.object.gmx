@@ -28,7 +28,7 @@
             <string>damage = 1;
 speed = 1
 enemies = true;
-move_towards_point(Player_obj.x, Player_obj.y, 10);
+move_towards_point(Player_obj.x, Player_obj.y, 5);
 xPosition = x;
 yPosition = y;
 </string>
